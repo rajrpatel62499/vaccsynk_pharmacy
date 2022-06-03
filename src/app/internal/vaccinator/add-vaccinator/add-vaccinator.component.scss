@@ -1,0 +1,127 @@
+
+.date-picker-grid-main{
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        background: url(../../../../assets/images/date-picker-main.svg) no-repeat;
+        background-size: 18px;
+        width: 20px;
+        height: 19px;
+        top: 23px;
+        bottom: 0px;
+        // left: 261px;
+        right: 15px;
+        margin: auto;
+    }
+}
+
+
+.signature-main {
+    border: 1px dashed #CFD0D1;
+    padding: 14px 0px;
+    border-radius: 5px;
+    width: 29%;
+    margin: 0px 232px;
+}
+
+label.sign-main {
+    margin-top: 14px;
+    padding: 0px 22px;
+    font-weight: 500;
+    position: relative;
+    top: 50px;
+}
+
+.signature-text {
+    text-align: center;
+    color: #959596;
+    padding: 12px;
+}
+.signature-main-inner {
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+}
+
+
+button.browse-btn-ab {
+    bottom: 10px;
+    left: 58.5%;
+    background: #14649c;
+    border: 1px solid #14649c;
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 5px;
+    margin: auto!important;
+    display: flex;
+}
+
+.main-inner-btn {
+    text-align: end;
+    padding: 0px 25px;
+}
+
+button.submit-btn {
+    bottom: 10px;
+    left: 58.5%;
+    background: #14649c;
+    border: 1px solid #14649c;
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 5px;
+    margin: auto !important;
+    /* display: flex; */
+}
+button.cancel-btn {
+    margin-left: auto;
+    padding: 7px 20px;
+    background: none;
+    border: 1px solid #14649C;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #14649c;
+    margin-right: 19px;
+}
+
+
+
+.is-invalid {
+    border: 1px solid red !important;
+}
+
+input {
+    background: #FFFFFF;
+    border: 1px solid #CFD0D1;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 100%;
+    padding: 15px 30px;
+    outline: none !important;
+    margin-top: 21px;
+}
+.inner-grid {
+    padding: 23px 0px;
+}
+
+.grid-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 13px;
+    grid-column-gap: 41px;
+    grid-row-gap: 31px;
+}
+
+.main-label {
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #14649C;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 18px 21px;
+    font-weight: 600;
+    
+}

@@ -1,0 +1,135 @@
+<!-- Charts Section -->
+<ng-container *ngIf="!isLoading">
+    <div class="background-div-main">
+        <div class="inner-grid-main">
+            <img src="../../../assets/images/blue-user.svg" alt="email">
+            <div class="right-main-top">
+                <span>New Request</span>
+                {{(dashboardData?.newRequest)?(dashboardData?.newRequest):'0'}}
+            </div>
+        </div>
+        <div class="inner-grid-main">
+            <img src="../../../assets/images/injections-blue.svg" alt="email">
+            <div class="right-main-top">
+                <span>1st Dose</span>
+                {{(dashboardData?.firstDose)?(dashboardData?.firstDose):'0'}}
+            </div>
+        </div>
+        <div class="inner-grid-main">
+            <img src="../../../assets/images/injections-blue.svg" alt="email">
+            <div class="right-main-top">
+                <span>2nd Dose</span>
+                {{(dashboardData?.secondDose)?(dashboardData?.secondDose):'0'}}
+            </div>
+        </div>
+        <div class="inner-grid-main">
+            <img src="../../../assets/images/blue-calender.svg" alt="email">
+            <div class="right-main-top">
+                <span>Cancelled Appointment</span>
+                {{(dashboardData?.cancelledRequest)?(dashboardData?.cancelledRequest):'0'}}
+            </div>
+        </div>
+        <div class="date-picker-main">
+            <div class="btn-group" dropdown>
+                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                    aria-controls="dropdown-animated">
+                    <span class="caret">This {{type|titlecase}}</span><img style="padding-left: 50px;"
+                        src="../../../assets/images/filter.svg">
+                </button>
+                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
+                    aria-labelledby="button-animated">
+                    <li role="menuitem" class="new-Request" (click)="onFilter('WEEK')"
+                        [ngClass]="{'active': type==='WEEK'}">
+                        <a class="dropdown-item">
+                            This Week
+                        </a>
+                    </li>
+                    <li role="menuitem" class="new-Request" (click)="onFilter('MONTH')"
+                        [ngClass]="{'active': type==='MONTH'}">
+                        <a class="dropdown-item">
+                            This Month
+                        </a>
+                    </li>
+                    <li role="menuitem" class="new-Request" (click)="onFilter('YEAR')"
+                        [ngClass]="{'active': type==='YEAR'}">
+                        <a class="dropdown-item">
+                            This Year
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="second-inner-grid">
+        <div class="inner-grid">
+            <div class="first-row">
+                <div class="first-header">Daily dose</div>
+            </div>
+
+            <div class="sepertaor"></div>
+            <div class="main-shimmer">
+
+            </div>
+            <div class="chart-wrapper">
+                <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                    [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType">
+                </canvas>
+
+            </div>
+
+
+        </div>
+        <div class="inner-grid">
+            <div class="first-row">
+                <div class="first-header">Patient</div>
+            </div>
+            <div class="sepertaor"></div>
+            <div>
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                    [plugins]="barChartPlugins" [colors]="barChartColors" [legend]="barChartLegend"
+                    [chartType]="barChartType">
+                </canvas>
+            </div>
+
+        </div>
+        <div class="inner-grid">
+            <div class="first-row">
+                <div class="first-header">Appointment</div>
+            </div>
+            <div class="sepertaor"></div>
+            <div class="chart-wrapper mt-5">
+                <canvas baseChart [data]="doughnutChartData" [options]="doughnutOptions" [colors]="doughnutChart"
+                    [labels]="doughnutChartLabels" [chartType]="doughnutChartType">
+                </canvas>
+            </div>
+        </div>
+        <div class="inner-grid">
+            <div class="first-row">
+                <div class="first-header">Registered user</div>
+            </div>
+            <div class="sepertaor"></div>
+            <div class="chart-wrapper">
+                <canvas baseChart [datasets]="lineChartDataOne" [labels]="lineChartLabelsOne"
+                    [options]="lineChartOptionsOne" [colors]="lineChartColorsOne" [legend]="lineChartLegendOne"
+                    [chartType]="lineChartTypeOne">
+                </canvas>
+            </div>
+            <div class="item" *ngIf="isLoading">
+                <ngx-skeleton-loader count="6" appearance="circle" [theme]="{
+        width: '66px',
+        height: '21px',
+        'border-radius': '10px'
+      }"> </ngx-skeleton-loader>
+            </div>
+        </div>
+    </div>
+
+</ng-container>
+
+
+<!-- Shimmer Section -->
+
+  <app-dashboard-skeleton *ngIf="isLoading"></app-dashboard-skeleton>

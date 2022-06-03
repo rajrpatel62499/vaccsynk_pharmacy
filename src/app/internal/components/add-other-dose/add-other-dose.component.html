@@ -1,0 +1,188 @@
+<div class="heading-row-main">
+    <div class="left-heading-col" *ngIf="this.doseNumber == 'FIRST'; else elseBlock"> Add First Dose</div>
+    <ng-template #elseBlock ><span class="left-heading-col">Add Second Dose</span></ng-template>
+</div>
+
+
+<div class="main-form-wrapper">
+
+    <div class="first-row-heading">
+        <!-- <div class="under-line-blue">COVID Vaccine Intake Consent Form  </div> -->
+    </div>
+    <!-- ----------------------Vaccin-admin----------------------- -->
+    <div class="text-short-main">Vaccine Administration Information ( for Immunizer/Pharmacist use only )</div>
+
+      <!-- ------------input=grid-main==================== -->
+      <form  [formGroup]="addDoseForm" > 
+      <div class="grid-for-input-main">
+        <div class="inner-grid-main date-picker-grid">
+        
+        <input readonly [ngClass]="{'is-invalid' : (f.administrationDate.errors && (f.administrationDate.touched || submitted))}" (bsValueChange)="onDateChange(administrationDate, 'administrationDate')"  #administrationDate  type="text" formControlName="administrationDate" placeholder="Administration Date (MM/DD/YYYY)" [minDate]="today"  bsDatepicker>
+        </div>
+        <div class="inner-grid-main">
+            <input   maxlength="20"  [ngClass]="{'is-invalid' : (f.vaccine.errors && (f.vaccine.touched || submitted))}"  type="text" formControlName="vaccine"  placeholder="Vaccine" >
+        </div>
+        <div class="inner-grid-main date-picker-grid-main">
+            <input  #VISDate readonly [ngClass]="{'is-invalid' : (f.VISDate.errors && (f.VISDate.touched || submitted))}"  (bsValueChange)="onDateChange(VISDate, 'VISDate')" type="text" formControlName="VISDate" placeholder="VIS Date (MM/DD/YYYY)"   [minDate]="today" bsDatepicker>
+        </div>
+        <div class="inner-grid-main">
+            <!-- <input   [ngClass]="{'is-invalid' : (f.manufacturer.errors && (f.manufacturer.touchPded || submitted))}"  type="text" formControlName="manufacturer" placeholder="Manufacturer" > -->
+            <div class="btn-group" [ngClass]="{'is-invalid-one' : (f.manufacturer.errors && (f.manufacturer.touched || submitted))}" dropdown>
+                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                        aria-controls="dropdown-animated">
+                 {{ f.manufacturer.value ? f.manufacturer.value : 'Select Manufacturer'}} <span class="caret"></span>
+                </button>
+                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                    role="menu" aria-labelledby="button-animated">
+                  <li  (click)="f.manufacturer.setValue('Pfizer')" role="menuitem"><a class="dropdown-item" >Pfizer</a></li>
+                  <li (click)="f.manufacturer.setValue('Moderna')" role="menuitem"><a class="dropdown-item" >Moderna</a></li>
+                  <li (click)="f.manufacturer.setValue('J&J')" role="menuitem"><a class="dropdown-item" >J&J</a></li>
+                  <!-- <li role="menuitem"><a class="dropdown-item" href="#">Something else
+                    here</a></li> -->
+                </ul>
+              </div>
+              
+        </div>
+        <div class="inner-grid-main">
+            <input  maxlength="20" OnlyNumeric [ngClass]="{'is-invalid' : (f.ndcNumber.errors && (f.ndcNumber.touched || submitted))}"  type="text" formControlName="ndcNumber" placeholder="NDC Number">
+        </div>
+        <div class="inner-grid-main">
+            <input  maxlength="20"  [ngClass]="{'is-invalid' : (f.volume.errors && (f.volume.touched || submitted))}"  type="text" formControlName="volume" placeholder="Volume (mL)">
+        </div>
+        <div class="inner-grid-main">
+            <input   maxlength="20" [ngClass]="{'is-invalid' : (f.lot.errors && (f.lot.touched || submitted))}"  type="text" formControlName="lot" placeholder="Lot #" >
+        </div>
+        <div class="inner-grid-main date-picker-grid">
+            <input readonly #expDate [ngClass]="{'is-invalid' : (f.expDate.errors && (f.expDate.touched || submitted))}" (bsValueChange)="onDateChange(expDate, 'expDate')" type="text" formControlName="expDate" placeholder="Exp. Date (MM/DD/YYYY)"  [minDate]="today" bsDatepicker>
+        </div>
+        <div class="inner-grid-main">
+            <input maxlength="20"  [ngClass]="{'is-invalid' : (f.route.errors && (f.route.touched || submitted))}"  type="text" formControlName="route" placeholder="Route" >
+        </div>
+        <div class="inner-grid-main radio-grid-main ">
+                <div class="site-tile"> Site:</div>
+                <div class="radio-group">
+                    <div class="first-radio">
+                        <input formControlName="site" [ngClass]="{'is-invalid-radio' : ((f.site.errors && submitted))}" type="radio" id="l"  value="l">
+                        <label for="l">L</label>
+                    </div>
+                    <div class="first-radio">
+                        <input formControlName="site" type="radio" id="r"  value="r">
+                        <label for="r">R</label>
+                    </div>
+
+                </div>
+        </div>
+        <div class="inner-grid-main">
+            <input OnlyNumeric maxlength="3" [ngClass]="{'is-invalid' : (f.patientTemp.errors && (f.patientTemp.touched || submitted))}" type="text" formControlName="patientTemp" placeholder="Patient Temperature" >
+        </div>
+        <div class="inner-grid-main">
+            <!-- <input   [ngClass]="{'is-invalid' : (f.administrationName.errors && (f.administrationName.touchPded || submitted))}"  type="text" formControlName="administrationName" placeholder="administrationName" > -->
+            <div class="btn-group" 
+            [ngClass]="{'is-invalid-one' : (f.administrationName.errors && (f.administrationName.touched || submitted))}" 
+            dropdown>
+                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                        aria-controls="dropdown-animated">
+                 {{f.administrationName.value ? f.administrationName.value : 'Administering Immunizer Name & Title' }}   <span class="caret"></span>
+                </button>
+                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                    role="menu" aria-labelledby="button-animated">
+                    <ng-container *ngFor="let vaccinator of vaccinators">
+                        <li (click)="f.administrationName.setValue(vaccinator.firstname);showSignature(vaccinator) " role="menuitem">
+                            <a class="dropdown-item">{{vaccinator.firstname}}</a>
+                        </li>
+                    </ng-container>
+      
+                    <ng-container *ngIf="vaccinators.length == 0">
+                        <li  role="menuitem">               
+                            <a class="dropdown-item">No Vaccinator Found..</a>
+                        </li>
+                    </ng-container>
+                  <!-- <li role="menuitem"><a class="dropdown-item" href="#">Something else
+                    here</a></li> -->
+                </ul>
+              </div>
+        </div>
+<!-- {{doseNumber|json}}
+{{patientId|json}}
+{{patientNumber|json}} -->
+
+        <!-- <div class="inner-grid-main ">
+            <input [ngClass]="{'is-invalid' : (f.administrationName.errors && (f.administrationName.touched || submitted))}" type="text" formControlName="administrationName" placeholder="Administering Immunizer Name & Title*" >
+        </div> -->
+        <div class="inner-grid-main ">
+            <input  maxlength="30"  formControlName="patientNumber" style="background: #F2F2F2;" disabled readonly [(ngModel)]="patientNumber" type=text placeholder="Patient Number" >
+        </div>
+         <div class="inner-grid-main signature-grid"> 
+            <span>Administering <br/>
+                Immunizer Signature</span>
+                <!-- <input type="file" accept="image/,exe,gif,.jpg,.jpeg,.png,.doc,.docx,.pdf" #file4 
+                [ngClass]="{'is-invalid': (f.administrationSignature.errors && (f.administrationSignature.touched || submitted))}"
+                hidden (change)="uploadImage($event,'administrationSignature' )" hidden formControlName="administrationSignature" /> -->
+         
+                    <div class="signature-main" (click)="Imgpreview()" >
+                        <ng-container >
+                            <img *ngIf="selectedVaccinator"  [src]="selectedVaccinator.signature" style="width: 150px; height: 150px;">
+                        </ng-container>
+                        <!-- <ng-container  *ngIf="vaccinators.length == 0">
+                           <span>Please Select Vaccinator to signature preview.</span>
+                        </ng-container> -->
+                    
+                    </div>
+
+        </div> 
+        
+        <!-- <div>
+            <span>Administering <br/>
+                Immunizer Signature:-</span>
+            <ng-container >
+                <img *ngIf="selectedVaccinator"  [src]="selectedVaccinator.signature" style="width: 100px; height: 100px;">
+            </ng-container>
+            <ng-container  *ngIf="vaccinators.length == 0">
+               <span>Please Select Vaccinator to signature preview.</span>
+            </ng-container>
+        </div> -->
+   
+    </div>
+
+    <div class="text-short-main">Clinic Information</div>
+
+    <div formGroupName="clinicInfo" class="grid-for-input-main border-none">
+        <div class="inner-grid-main">
+            <input  maxlength="50" [ngClass]="{'is-invalid' : (f.clinicInfo.get('clinicId').errors && (f.clinicInfo.get('clinicId').touched || submitted))}" type="text" formControlName="clinicId"  placeholder="Clinic ID">
+        </div>
+        <div class="inner-grid-main">
+            <input  maxlength="50" appInputRestriction="noSpecialChars"  [ngClass]="{'is-invalid' : (f.clinicInfo.get('name').errors && (f.clinicInfo.get('name').touched || submitted) )}"  type="text" formControlName="name"  placeholder="Clinic Name" >
+        </div>
+        <div class="inner-grid-main">
+            <input  maxlength="10" OnlyNumeric [ngClass]="{'is-invalid' : (f.clinicInfo.get('telephone').errors && (f.clinicInfo.get('telephone').touched || submitted) )}"  type="text" formControlName="telephone"  placeholder="Telephone">
+        </div>
+        <div class="inner-grid-main">
+            <input  maxlength="10" OnlyNumeric [ngClass]="{'is-invalid' : (f.clinicInfo.get('storeNumber').errors && (f.clinicInfo.get('storeNumber').touched || submitted) )}"  type="text"  formControlName="storeNumber" placeholder="Store Number" >
+        </div>
+        <div class="inner-grid-main">
+            <input 
+            ngx-google-places-autocomplete  [ngClass]="{'is-invalid' : (f.clinicInfo.get('address').errors && (f.clinicInfo.get('address').touched || submitted) )}"
+            (onAddressChange)="handleAddressChange($event, 'address')"
+            placeholder="Address"
+            formControlName="address" type="text" />
+        </div>
+        <div class="inner-grid-main">
+            <input maxlength="50"  appInputRestriction="noSpecialChars" [ngClass]="{'is-invalid' : (f.clinicInfo.get('city').errors && (f.clinicInfo.get('city').touched || submitted) )}"  type="text" formControlName="city"  placeholder="City" >
+        </div>
+        <div class="inner-grid-main">
+            <input maxlength="50"  appInputRestriction="noSpecialChars" [ngClass]="{'is-invalid' : (f.clinicInfo.get('state').errors && (f.clinicInfo.get('state').touched || submitted) )}"  type="text"  formControlName="state" placeholder="State" >
+        </div>
+        <div class="inner-grid-main">
+            <input maxlength="30" OnlyNumeric [ngClass]="{'is-invalid' : (f.clinicInfo.get('zip').errors && (f.clinicInfo.get('zip').touched || submitted) )}"  type="text" formControlName="zip" placeholder="Zip" >
+        </div>
+        
+    </div>
+        <!-- ------------------last-button-row------------------ -->
+        <div class="last-button-row">
+            <button class="back-btn" (click)="util.goBack()">Back</button>
+            <button style="cursor: pointer;" class="next-btn" (click)="OnSubmit()">
+                <i class="fa mr-2" [ngClass]="{'fa-spin fa-spinner': isLoading}"></i>
+                Submit</button>
+        </div>
+    </form>
+</div>

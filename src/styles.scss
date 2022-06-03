@@ -1,0 +1,858 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$Vaccynk-Pharmacy-primary: mat-palette($mat-indigo);
+$Vaccynk-Pharmacy-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$Vaccynk-Pharmacy-warn: mat-palette($mat-red);
+
+$Vaccynk-Pharmacy-theme: mat-light-theme((
+  color: (
+    primary: $Vaccynk-Pharmacy-primary,
+    accent: $Vaccynk-Pharmacy-accent,
+    warn: $Vaccynk-Pharmacy-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($Vaccynk-Pharmacy-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Sul Sans';
+  src: url('assets/fonts/SulSans-Bold.eot');
+  src: url('assets/fonts/SulSans-Bold.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/SulSans-Bold.woff2') format('woff2'),
+      url('assets/fonts/SulSans-Bold.woff') format('woff'),
+      url('assets/fonts/SulSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sul Sans';
+  src: url('assets/fonts/SulSans-Light.eot');
+  src: url('assets/fonts/SulSans-Light.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/SulSans-Light.woff2') format('woff2'),
+      url('assets/fonts/SulSans-Light.woff') format('woff'),
+      url('assets/fonts/SulSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sul Sans';
+  src: url('assets/fonts/SulSans-Regular.eot');
+  src: url('assets/fonts/SulSans-Regular.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/SulSans-Regular.woff2') format('woff2'),
+      url('assets/fonts/SulSans-Regular.woff') format('woff'),
+      url('assets/fonts/SulSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+  @media (min-width: $min-screen-size +"px") {
+  @content;
+  }
+  }
+  
+  @mixin max-mq($max-screen-size) {
+  @media (max-width: $max-screen-size +"px") {
+  @content;
+  }
+  }
+  
+  // ----------------------------For Orientation-----------------------//
+  @mixin landscape-orientation($max-screen-size,
+  $orientation) {
+  @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+  @content;
+  }
+  }
+  
+  @mixin btw-mq($min-screen-size,
+  $max-screen-size,
+  $pixel-ratio,
+  $orientation) {
+  @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+  @content;
+  }
+  }    
+// ------------END of Media Screen Mixing--------------// 
+
+
+html{
+  
+  overflow-x: hidden;
+  margin: 0px;
+  padding: 0;
+  font-family: 'Sul sans' !important;
+  font-weight: 300 !important;
+  color: #333333;
+  font-size: 15px;
+  line-height: 19px;
+  box-sizing: border-box;
+  height: 100%;
+  background: #f9f9f9;
+  @include max-mq(1300){
+      font-size: 13px;
+  }
+  body{
+      @extend html;
+      
+  }
+
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+ul{
+  list-style-type: none;
+  padding: 0px;
+  margin:0px;
+  
+}
+
+a{
+  text-decoration: none;
+  color: rgba(51, 51, 51, 0.7);
+  cursor: pointer;
+}
+
+
+li{
+  cursor: pointer;
+}
+
+
+.heading {
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.label-form {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+  @include max-mq(1100){
+    font-size: 13px;
+    line-height: 15px;
+    margin-bottom: 5px;
+  }
+}
+
+input {
+  background: #FFFFFF;
+  border: 1px solid #CFD0D1;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  padding: 15px 30px;
+  outline: none !important;
+  @include max-mq(1100){
+    padding: 10px 20px;
+
+  }
+}
+
+.wrapper input {
+  padding: 0;
+}
+
+span.mat-checkbox-label {
+  font-weight: 400;
+  font-family: 'sul sans' !important;
+}
+span.mat-checkbox-label {
+  font-weight: 500;
+  font-family: 'sul sans' !important;
+  font-size: 14px;
+}
+
+button.btn {
+  margin: 20px 0px;
+  margin-top: 30px;
+  color: #fff;
+  cursor: pointer;
+  background: #14649C;
+  border: 1px solid #14649C;
+  padding: 11px 7px;
+  border-radius: 10px;
+  @include max-mq(1100){
+    margin: 20px 0px;
+    margin-top: 20px;
+    padding: 8px 7px;
+
+  }
+}
+
+a.link-text {
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  color: #14649C;
+  margin-top: 30px;
+}
+
+.margin-left-10px {
+  margin-left: 10px;
+}
+
+.email-id{
+  position: relative;
+  &::before{
+    position: absolute;
+    content: '';
+    background: url(assets/images/email.svg)no-repeat;
+    background-size: 20px;
+    width: 20px;
+    height: 20px;
+    right: 20px;
+    top: 33px;
+    bottom: 0;
+    margin: auto;
+    @include max-mq(1100){
+      background-size: 15px;
+      width: 15px;
+      height: 15px;
+      top: 23px;
+    }
+  }
+}
+
+.password-id{
+  position: relative;
+  button{
+    position: absolute;
+    right: 8px;
+    top: 30px;
+    bottom: 0;
+    margin: auto;
+    @include max-mq(1100){
+      top: 22px;
+    }
+    img{
+      @include max-mq(1100){
+        width: 19px;
+      }
+    }
+  }
+}
+
+.main-wrapper {
+  background: #f9f9f9;
+  height: 100%;
+  overflow: auto;
+  margin-bottom: 10px;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  @include max-mq(1100){
+    margin-left: 180px !important;
+  }
+  @include max-mq(991){
+    margin-left: 0px !important;
+    margin-top: 60px !important;
+  }
+}
+
+.main-wrapper-div-white {
+  background: #fff;
+  margin: 0px 15px;
+  padding: 0px 0px;
+  border-radius: 10px;
+  height: calc(100vh - 77px);
+  // overflow: auto;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.border-none {
+  border: none !important;
+}
+
+b{
+  font-weight: bold;
+}
+
+.margin-bottom-20{
+  margin-bottom: 20px;
+}
+
+.check-box-custom{
+  .mat-checkbox{
+      span.mat-checkbox-label{
+          font-weight: 400 !important;
+      }
+  }
+}
+
+.mat-paginator-outer-container {
+  display: flex;
+  position: absolute;
+  // bottom: 0px;
+  right: 0;
+  background: #fff;
+  left: 0;
+  width: 100%;
+  top: auto;
+}
+
+
+.swal2-actions {
+  display: flex !important;
+  z-index: 1 !important;
+  box-sizing: border-box !important;
+  flex-wrap: wrap !important;
+  align-items: center;
+  justify-content: space-evenly !important;
+  width: 100% !important;
+  margin: 1.25em auto 0 !important;
+  padding: 0 1.6em !important;
+}
+
+
+.filter-div-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    @include max-mq(1660){
+      padding: 13px 15px;
+    }
+    @include max-mq(567){
+      flex-direction: column ;
+    }
+    .left-col {
+      width: 30%;
+      position: relative;
+      @include max-mq(567){
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      &::before{
+        position: absolute;
+        content: '';
+        background: url(assets/images/search-icon.svg)no-repeat;
+        background-size: 20px;
+        width: 20px;
+        height: 20px;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
+        left: 10px;
+      }
+      input{
+        padding: 11px 20px;
+        border-radius: 10px;
+        padding-left: 35px;
+      }
+    }
+    .right-col {
+      display: flex;
+      align-items: center;
+      @include max-mq(567){
+        width: 100%;
+      }
+      .date{
+        @include max-mq(567){
+          width: 100%;
+        }
+        .mat-form-field {
+          @include max-mq(567){
+            width: 100%;
+            margin-right: 0px;
+          }
+
+        }
+      }
+      
+    }
+}
+    
+.date{
+  .mat-form-field {
+    margin-right: 20px;
+    @include max-mq(1500){
+      margin-right: 40px;
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0 !important;
+      .mat-form-field-flex {
+        padding: 0 !important;
+        background: none !important;
+        .mat-form-field-infix {
+          padding: 0 !important;
+          margin: 0 !important;
+          width: 100% !important;
+          border: none !important;
+          input {
+            border: 1px solid #e5e5e5 !important;
+            border-radius: 10px !important;
+            padding: 13px 20px !important;
+          }
+        }
+        .mat-form-field-suffix {
+          position: absolute;
+          right: -33px;
+          top: 4px;
+          bottom: 0;
+          margin: auto;
+        }
+      }
+      .mat-form-field-underline {
+        display: none;
+      }
+      .mat-form-field-subscript-wrapper {
+        margin: auto !important;
+      }
+    }
+  }
+}
+
+.filter{
+  .btn-group{
+    button{
+      margin: auto;
+      padding: 11px 34px;
+      background: #fff !important;
+      border: 1px solid #e5e5e5 !important;
+      outline: none !important;
+      box-shadow: none !important;
+      border-radius: 10px;
+      color: #000 !important;
+      &::after{
+        display: none;
+      }
+      img {
+        margin-left: 20px;
+      }
+    }
+    .dropdown-menu {
+      border-radius: 7px !important;
+      padding: 13px 0px;
+      li.apply {
+        text-align: center;
+        padding: 3px 0px;
+        a.dropdown-item{
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 17px;
+          text-align: center;
+          letter-spacing: 0.02em;
+        }   
+      }
+       a.dropdown-item.active{
+          background-color:yellow;
+          color:#fff;
+        }  
+
+      .new-Request {
+        margin-bottom: 10px;
+        a.dropdown-item {
+          padding-left: 30px;
+          padding-right: 30px;
+          font-size: 12px;
+          line-height: 15px;
+          letter-spacing: 0.02em;
+          color: #333333;
+          position: relative;
+        }
+        .first-drop{
+          &::before{
+            position: absolute;
+            content: '';
+            background: #B2DF8A;
+            width: 10px;
+            height: 10px;
+            left: 11px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 100%;
+          }
+       
+        }
+ 
+
+        .second-drop{
+          &::before{
+            position: absolute;
+            content: '';
+            background: #DB000D;
+            width: 10px;
+            height: 10px;
+            left: 11px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 100%;
+          }
+        }
+        .third-drop{
+          &::before{
+            position: absolute;
+            content: '';
+            background: #FA9E28;
+            width: 10px;
+            height: 10px;
+            left: 11px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 100%;
+          }
+        }
+      }
+    }
+    
+  }
+}
+
+
+.patient-table{
+  .mat-elevation-z8{
+    box-shadow: none !important;
+    table.mat-table.cdk-table.mat-sort {
+      font-family: 'Sul Sans' !important;
+      thead{
+        tr.mat-header-row{
+          height: auto !important;
+          background: #F8F8F8 !important;
+          th {
+            padding-top: 12px !important;
+            padding-bottom: 12px !important;
+            font-weight: 500 !important;
+            font-size: 15px !important;
+            line-height: 19px !important;
+            letter-spacing: 0.02em !important;
+            color: #333333 !important;
+            @include max-mq(1660){
+              font-size: 13px !important;
+            }
+          }
+        }
+      }
+      tbody{
+        tr{
+          height: auto !important;
+          td.mat-cell {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            @include max-mq(1660){
+              padding-top: 15px;
+              padding-bottom: 15px;
+              font-size: 12px !important;
+            }
+            @include max-mq(1280){
+              font-size: 12px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.mat-paginator {
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+a.del-btn {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+  img{
+    width: 18px;
+  }
+}
+
+a.edit-btn {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 20px;
+  img{
+    width: 18px;
+  }
+}
+a.dose-history {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 20px;
+  img{
+    width: 18px;
+  }
+}
+a.add-dose {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 20px;
+  img{
+    width: 18px;
+  }
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+// input[readonly] {
+//   background-color: transparent !important;
+// }
+// input[readonly] {
+//   background-color: transparent !important;
+// }
+
+button{
+  outline: none !important;
+  cursor: pointer;
+}
+
+.swal2-confirm {
+  display: inline-block;
+  width: 100px;
+}
+
+.dropdown-item:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #f8f9fa;
+  background: transparent;
+}
+
+.inner-grid-main.signature-grid canvas {
+  width: 100%;
+  height: 130px;
+}
+
+.mat-dialog-container {
+  display: block;
+  padding: 24px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: auto;
+  outline: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  max-height: inherit;
+  margin-bottom: 106px;
+}
+
+.mat-sort-header-content {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  @include max-mq(1200){
+    font-size: 9px !important;
+  }
+}
+
+.otp-input {
+  @include max-mq(991){
+    width: 50px !important;
+    height: 50px !important;
+    margin-right: 20px !important;
+  }
+  @include max-mq(567){
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 17px !important;
+  }
+  @include max-mq(380){
+    width: 35px !important;
+    height: 35px !important;
+    margin-right: 16px !important;
+  }
+  
+  &:last-child{
+    @include max-mq(991){
+      margin-right: 0px !important;
+    }
+  }
+  
+}
+
+label.xng-breadcrumb-trail{
+  margin-bottom: 0px !important;
+  @include max-mq(1550){
+    font-size: 15px;
+  }
+  @include max-mq(567){
+    font-size: 11px;
+  }
+}
+
+
+.avatar-container {
+  @include max-mq(567){
+      width: 25px  !important;
+      height: 25px !important;
+  }   
+  .avatar-content{
+      @include max-mq(567){
+          font: 10px / 25px Helvetica, Arial, sans-serif !important;
+      }
+  }
+ 
+}
+
+.mat-sort-header-container {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  letter-spacing: normal;
+  outline: 0;
+  padding: 0px 17px;
+}
+
+
+@media (max-width:1480px){
+  .registerd-phar-main {
+    width: 100%;
+    overflow-x:scroll;
+  }
+  .registerd-phar-main table.mat-table {
+    width: 1500px !important;
+  }
+  .registerd-phar-main::-webkit-scrollbar {
+    width: 0px;
+  }
+  // .registerd-phar-main::-webkit-scrollbar-track {
+  //   background: #f1f1f1; 
+  // }
+  // .registerd-phar-main::-webkit-scrollbar-thumb {
+  //   background: #888; 
+  // }
+  // .registerd-phar-main::-webkit-scrollbar-thumb:hover {
+  //   background: #555; 
+  // }
+}
+
+@media (max-width:1100px){
+  .registerd-phar-main table.mat-table {
+    width: 1030px !important;
+  }
+}
+
+.mat-table {
+  overflow-x: scroll;
+}
+
+
+.modal-change-password {
+  width: 26%;
+  max-width: 100% !important;
+  padding: 0 !important;
+  @include max-mq(1300){
+    width: 35%;
+  }
+  @include max-mq(1100){
+    width: 55%;
+  }
+  @include max-mq(991){
+    width: 95%;
+  }
+}
+
+
+// -------------Edit-timing-modal-main------------//
+.edit-timing-modal-main {
+  // max-width: 100% !important;
+  // width: 32% !important;
+  .second-row-main {
+    display: flex;
+    align-items: center;
+    padding: 0px 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    // justify-content: space-around;
+  }
+}
+
+.edit-timing-modal-main .second-row-main .right-col {
+  display: flex;
+  align-items: center;
+}
+.edit-timing-modal-main .second-row-main .right-col input {
+  padding: 4px 10px;
+  border-radius: 5px;
+  width: 60px;
+  height: 35px;
+}
+
+.edit-timing-modal-main .second-row-main .right-col label.max-dose-day {
+  left: 0;
+  margin-right: 20px;
+  margin-bottom: 0px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+label.mat-checkbox-layout {
+  margin-bottom: 0 !important;
+}
+
+a.mat-tab-link {
+  font-family: 'Sul Sans' !important;
+}
+
+.mail-icon-main:first-child {
+  display: none;
+}
+
+.patient-table .mat-elevation-z8 table.mat-table.cdk-table.mat-sort tbody tr td:first-child, .patient-table .mat-elevation-z8 table.mat-table.cdk-table.mat-sort thead tr.mat-header-row th:first-child {
+  padding-left: 15px !important;
+}
+.patient-table .mat-elevation-z8 table.mat-table.cdk-table.mat-sort tbody tr td.mat-cell {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 38px;
+  margin: 3px 13px;
+  position: relative;
+  left: 18px;
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    margin-right: 0px;
+    font-size: 13px;
+}
+
+th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+  padding-right: 24px;
+  padding-left: 30px !important;
+}
+
+html, body {
+  scrollbar-width: none;
+}
+
+.registerd-phar-main, .register-page-main{
+  scrollbar-width: none;
+}

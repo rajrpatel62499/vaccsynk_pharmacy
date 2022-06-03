@@ -1,0 +1,49 @@
+
+  <div class="header-area-main">
+      <div class="left-col-title">
+        <!-- {{userProfileData?.pharmacyName}} -->
+        <a class="home"><img src="../../../../assets/images/home.svg" alt="home" title="home">|</a> 
+        <xng-breadcrumb [separator]="'|'">
+          <!-- <ng-container *xngBreadcrumbItem="let breadcrumb; let icon; ">
+            {{breadcrumb}}
+            <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+          </ng-container> -->
+        </xng-breadcrumb>
+      </div>
+      <div class="right-col-combo">
+          <div class="mail-icon-main">
+            <a style="cursor: pointer;" (click)="openDialog()"><img src="../../../../assets/images/mail-icon.svg" alt=""></a>
+          </div>
+          <div class="mail-icon-main" style="cursor: pointer;outline: none;"><img style="cursor: pointer;outline: none;" [routerLink]="[AppRoutes.ROOT,AppRoutes.NOTIFICATION]" src="../../../../assets/images/notification.svg" alt="mail" title="mail"></div>
+          <div class="img-profile-main" [routerLink]="[AppRoutes.ROOT,AppRoutes.SETTINGS]" style="cursor: pointer;outline: none;">
+              <!-- <img src="../../../../assets/images/speaker-3-v2 1.png" alt="profile-pic" title="profile-pic"/> -->
+              <ngx-avatar  size="40" bgColor="#14649c"   [name]="userProfileData?.pharmacyName.charAt(0).toUpperCase()"></ngx-avatar>
+              <div class="gravatar">
+                <ngx-skeleton-loader  *ngIf="isLoading" appearance="circle" [theme]="{ width: '50px', height: '50px' }"></ngx-skeleton-loader>
+              </div>
+              <div>
+                <ngx-skeleton-loader  *ngIf="isLoading" [theme]="{ width: '170px', 'border-radius': '0', height: '30px' , 'margin-top': '6px'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="btn-group ml-2" dropdown>
+                <strong> {{ userProfileData?.pharmacyName }} </strong>
+                <!-- <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                        aria-controls="dropdown-basic">
+                        {{ userProfileData?.pharmacyName }}
+                         <span class="caret"></span>
+                </button> -->
+                <!-- <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                    role="menu" aria-labelledby="button-basic"> -->
+                  <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="[AppRoutes.ROOT,AppRoutes.DOSE_HISTORY]">Dose History</a></li>
+                  <li role="menuitem"><a class="dropdown-item" [routerLink]="[AppRoutes.ROOT,AppRoutes.REMINDER]">Reminder</a></li> -->
+                  <!-- <li class="divider dropdown-divider"></li> -->
+                  <!-- <li role="menuitem"><a class="dropdown-item" href="javascript:;" (click)="logout()">Log Out</a>
+                  </li>
+                </ul> -->
+              </div>
+          </div>
+
+
+      </div>
+
+  </div>

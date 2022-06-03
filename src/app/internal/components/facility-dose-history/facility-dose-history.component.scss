@@ -1,0 +1,124 @@
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }   
+
+
+.inner-main {
+    display: flex;
+}
+
+.inner-first-col {
+    width: 60%;
+    border-right: 1px solid #E5E5E5;
+}
+
+.inner-second-col {
+    width: 40%;
+}
+
+.col-third-main {
+    display: flex;
+}
+span.main-inner-span {
+    margin-right: 49px;
+    @include max-mq(1300){
+        margin-right: 27px;
+    }
+}
+.inner-col-third {
+    width: 50%;
+}
+li.main-inner-li-admin {
+    display: flex;
+    width: 63%;
+    font-weight: 600;
+}  
+
+b.main-b {
+    margin-left: 20px;
+}
+
+.inner-col-fourth {
+    margin-left: 11px;
+}
+
+.inner-col-fourth{
+    width: 50%;
+    margin-left: 19px;
+}
+li.main-inner-li {
+    display: flex;
+    width: 64%;
+    font-weight: 600;
+}
+
+span.dose-main {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    color: #14649C;
+    position: relative;
+    top: -7px;
+}
+.first-row {
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: underline;
+    padding: 14px 0px;
+    border-top: 1px solid #E5E5E5;
+}
+.first-do-main {
+    padding: 17px 25px;
+}
+ul.main-ul-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-main-for {
+    display: flex;
+    padding: 10px 2px;
+}
+
+.main-photo {
+    display: flex;
+    justify-content: center;
+    margin-top: 101px;
+}
+
+.no-data {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #14649C;
+}

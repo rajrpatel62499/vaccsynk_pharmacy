@@ -1,0 +1,336 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+// ------------END of Media Screen Mixing--------------// 
+
+.heading-main-text {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #14649C;
+    padding: 14px 0px;
+    border-bottom: 1px solid #E5E5E5;
+}
+.seperator {
+    border-bottom: 1px solid #E5E5E5;
+}
+.inner-heading-text {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #14649C;
+    padding: 16px 0px;
+    .search-box-container input {
+        padding: 5px 20px 5px 5px;
+      }
+      
+      .search-box-container:after {
+          content: "\f002";
+          font-family: FontAwesome;
+          margin-left: -25px;
+          margin-right: 25px;
+      }
+}
+.search-box-container {
+    width: 33%;
+    padding: 19px 0px;
+}
+
+
+.main-grid {
+    /* background: #f9f9f9; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin-top: 41px;
+}
+.button-submit {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.inner-grid {
+    background: #FFFFFF;
+    border: 1px solid #CFD0D1;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.first-row {
+    display: flex;
+}
+.avtaar-main {
+    width: 62px;
+    height: 62px;
+    background: #14649C;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+}
+.row-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: #333333;
+}
+
+.first-row {
+    padding: 0px 2px;
+}
+
+.inner-grid {
+    padding: 20px 10px;
+    border: 1px solid #CFD0D1;
+    border-radius: 10px;
+    display: flex;
+    .left-div {
+        width: 62px;
+        height: 62px;
+        background: #14649C;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        color: #fff;
+        font-weight: 500;
+        font-size: 25px;
+        line-height: 31px;
+    }
+    .right-col{
+        width: 85%;
+        margin-left: 29px;
+        .first-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            .pharmacy-name {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                color: #333;
+            }
+        }
+        .address-img-main {
+            margin-bottom: 19px;
+            font-size: 14px;
+            line-height: 17px;
+            letter-spacing: 0.02em;
+        }
+        .time-main{
+            font-size: 14px;
+            line-height: 17px;
+            letter-spacing: 0.02em;
+        }
+}
+
+}
+label.emp-main {
+    margin: auto;
+    color: #14649C;
+    font-size: 15px;
+    
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    right: 0px;
+    bottom: 0;
+    width: 450px;
+    margin: auto;
+    top: 460px;
+    left: 0;
+    right: 0;
+    @include max-mq(1500){
+        width: 230px;
+        margin: auto;
+        top: 380px;
+        left: 0;
+        right: 0;
+    }
+}
+.date-picker-main{
+    position: relative;
+    padding: 11px 0px;
+    &::before{
+        position: absolute;
+        content: '';
+        background: url(../../../../assets/images/date-picker-main.svg) no-repeat;
+        background-size: 18px;
+        width: 20px;
+        height: 19px;
+        top: 0px;
+        bottom: 0px;
+        right: 8%;
+        margin: auto;
+    }
+} 
+.sepertaor-bottom {
+    border-bottom: 1px solid #E5E5E5;
+    padding: 9px;
+}
+.date-main {
+    padding: 32px 14px;
+    padding: 32px 14px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    color: #333333;
+}
+button.next-btn {
+    padding: 10px 40px;
+    font-size: 15px;
+    background: none;
+    border: 1px solid #14649C;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: #14649C;
+    color: white;
+}
+.last-button-row {
+    text-align: end;
+}
+
+
+
+
+//   
+
+
+// pharmacy details scss
+
+.inner-heading-pharma {
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    padding: 12px 0px;
+    color: #333333;
+}
+
+.main-grid-system-pharma {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 25px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+  
+}
+.pharma-name {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 19px;
+    color: #333333;
+    width: 157px;
+}
+.inner-grid-first {
+    display: flex;    
+    padding: 12px 0px;
+}
+.inner-grid-pharma-main {
+    display: flex;
+}
+.date-time-main {
+    display: flex;
+}
+.button-main {
+    display: flex;
+}
+.details {
+    font-size: 17px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #333333;
+    font-weight: 600;
+}
+
+
+button.back-btn {
+    padding: 10px 40px;
+    font-size: 15px;
+    margin-right: 7px;
+    background: none;
+    border: 1px solid #14649C;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.date-time-value {
+    font-weight: 600;
+    width: 91px;
+}
+
+.main-contact {
+    display: flex;
+    // justify-content: space-between;
+    .time-main{
+        margin-right: 20px;
+        display:flex;
+        align-items: center;
+        img{
+            margin-right: 10px;
+        }
+    }
+}
+
+.view-set {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 23px;
+    text-decoration-line: underline;
+    color: #14649C;
+    outline: none;
+    margin-top: 15px;
+}
+
+.search-box-container::after {
+    position: absolute;
+    content: "";
+    background: url(../../../../assets/images/search-icon.svg) no-repeat;
+    background-size: 20px;
+    width: 20px;
+    height: 20px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    left: 18px;
+}
+
+input[type="text"] {
+    padding: 13px 44px;
+}

@@ -1,0 +1,32 @@
+<div class="select-heading-main">
+    <div class="close-btn" (click)="onNoClick()">
+        <img src="../../../../assets/images/close-icon.svg" alt="clsoe" title="close">
+    </div>
+
+    
+    <div class="heading-title">Vaccinator Details</div>
+
+</div>
+
+
+<div class="main-content-modal-wrapper">
+<div class="pharma-main">
+    <div class="first-row">
+        <ul class="first-col"> 
+            <li><span class="left-col">Full Name :</span> <span class="right-col">{{(data?.firstname)?(data?.firstname):'--'}}</span></li>
+            <li><span class="left-col">NPI Number :</span> <span class="right-col">{{(data?.NPINumber)?(data?.NPINumber):'--'}}</span></li>
+            <li><span class="left-col">License Number :</span> <span class="right-col">{{(data?.Licence)?(data?.Licence):'--'}}</span></li>
+            <li><span class="left-col">CPR Number :</span> <span class="right-col">{{(data?.CPRNumber)?(data?.CPRNumber):'--'}}</span></li>
+            <li><span class="left-col">Employee Signature:</span><span class="right-col"><img [src]="data.signature" style="width: 100px; height: 50px; border: 1px solid;" ></span></li>
+        </ul>
+    </div>
+    <div class="second-row">       
+        <ul class="second-col">
+        <li><span class="left-col-one">Email Address:</span> <span class="right-col">{{(data?.email)?(data?.email):'--'}}</span></li>
+        <li><span class="left-col-one">Expiration Date (NPI):</span> <span class="right-col">{{(data?.NPIExpDate)?(data?.NPIExpDate):'--'}}</span></li>
+        <li><span class="left-col-one">Expiration Date (License):</span> <span class="right-col">{{(data?.LicenceExpDate)?(data?.LicenceExpDate):'--'}}</span></li>
+        <li><span class="left-col-one">Expiration Date (CPR):</span> <span class="right-col">{{(data?.CPRExpDate)?(data?.CPRExpDate):'--'}}</span></li>
+    </ul>
+  </div>
+</div>
+</div>

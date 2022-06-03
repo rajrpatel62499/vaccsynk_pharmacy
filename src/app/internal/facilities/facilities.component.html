@@ -1,0 +1,15 @@
+<!-- <app-facilities-header></app-facilities-header>
+  <router-outlet></router-outlet> -->
+
+ 
+  <ng-container *ngIf="(vacService.editedFacility$|async); else elseBlock">
+    
+      <app-facilities-header></app-facilities-header>
+      <router-outlet></router-outlet>
+    
+  </ng-container>
+
+  <ng-template #elseBlock>
+    <app-facilities-list
+    ></app-facilities-list>
+  </ng-template>

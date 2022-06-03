@@ -1,0 +1,57 @@
+<div class="col-3 ml-xl-5 pt-sm-5"><span class="heading-main">All Notifiactions</span></div>
+
+<ng-container *ngIf="notificationList?.length > 0;else other_content">
+    <div class="container-fluid p-5">
+        <ng-container *ngFor="let notification of notificationList">
+            
+            <div *ngIf="notification?.messageForPharmacy" class="row" >
+    
+                <div class="col-lg-1"><img src="../../../assets/images/notification-bell.svg"></div>
+                <div class="col-lg-10"> <span class="inner-text-main">{{notification?.messageForPharmacy}}</span><span
+                        class="inner-text-main-second">{{notification?.createdAt | date : 'MM-dd-yyyy | HH:mm'}}
+    
+                    </span></div>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>
+
+<ng-template #other_content>
+    <div class="main-photo" *ngIf="!isLoading">
+        <div class="img-dose">
+            <img src="../../../assets/images/notification-notfound.svg">
+            <div class="no-data">No notification yet!</div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-container *ngFor="let item of [1,2,3]">
+
+    <div class="first-section-wrapper" *ngIf="isLoading" style="margin-top: 30px;">
+        <div class="gravatar">
+            <ngx-skeleton-loader appearance="circle" [theme]="{ width: '60px', height: '60px' }">
+            </ngx-skeleton-loader>
+        </div>
+        <div class="gravatar-title">
+            <div>
+                <ngx-skeleton-loader [theme]="{
+                        width: '637px',
+                        'border-radius': '0',
+                        height: '21px',
+                        'margin-bottom': '10px',
+                        'margin-left': '23px'
+                        }">
+                </ngx-skeleton-loader>
+            </div>
+            <div>
+                <ngx-skeleton-loader [theme]="{
+                            width: '147px',
+                            'border-radius': '0',
+                            height: '21px',
+                            'margin-bottom': '10px',
+                            'margin-left': '23px'
+                            }"></ngx-skeleton-loader>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,22 @@
+<div class="main-popup-clas">
+    <!-- <div class="img-class">
+        <img src="assets/images/email-1.svg" />
+    </div> -->
+    <div class="verify-heading">Enter Code</div>
+    <!-- <p>Please verify your email address to get started.</p> -->
+    <div class="email-id-main">
+        <!-- <label class="email">Enter your code-</label> -->
+        <!-- <span class="email-id-origin">{{data.email}}</span> -->
+    </div>
+    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+
+    <div class="click-verify-main">
+        <button (click)="onSubmit()" class="click-to-verify"><i class="fa"
+                [ngClass]="{'fa-spin fa-spinner mr-2': isLoading}"></i>Submit</button>
+    </div>
+
+    <button class="cross-btn" (click)="onNoClick()">
+        <img class="cross-btn-align" src="assets/images/cross.svg" />
+    </button>
+
+</div>

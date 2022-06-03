@@ -1,0 +1,114 @@
+<div class="main-warpper">
+    <div class="main-heading">Reminder</div>
+    <div class="sepertaor"></div>
+
+    <div class="first-row-main">
+        <div class="child-heading">Reminder! Return for a second dose! (¡Recordatorio! ¡Regrese para la segunda dosis!)
+        </div>
+        <div class="first-inner-row">
+            <span class="vaccin-text">Vaccine</span>
+            <span class="date-fetch">Date/Fetch</span>
+        </div>
+        <div class="second-inner-row">
+            <span class="covid-text">COVID-19 vaccine<br>
+                Vacuna parael COVID-19
+            </span>
+            <div class="date-picker-main">
+                <input [ngClass]="{'is-invalid' : (date.errors && (date.touched || submitted) )}" [formControl]="date"
+                    readonly [minDate]="today" type="text" placeholder="MM/DD/YY" class="form-control"
+                    (bsValueChange)="onDateChange()" bsDatepicker />
+            </div>
+
+        </div>
+        <div class="third-inner-row">
+            <span class="other-text">Other <br>Otra
+            </span>
+            <div class="date-picker-main">
+                <input [formControl]="other"
+                    [ngClass]="{'is-invalid' : (other.errors && (other.touched || submitted) )}" readonly type="text"
+                    placeholder="MM/DD/YY" class="form-control" bsDatepicker />
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------date-picker-row------------------- -->
+    <!-- <div class="datepicker-row-main">
+    <div class="label-main">Select date to check available doses</div>
+    <div class="inner-grid-main date-picker-main">
+        <input 
+        type="text" 
+        class="form-control"
+        
+        [minDate]="today"
+        readonly
+        (bsValueChange)="onDateChange()"
+        bsDatepicker  />
+    </div>
+</div> -->
+    <!-- [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" -->
+    <!-- -=-----select-time-0------ -->
+    <div class="time-heading">Time Slot</div>
+    <div class="time-slot-grid">
+        <!-- <div class="inner-grid-system not-avialble">8:00-9:00</div>
+<div class="inner-grid-system available">9:00-10:00</div> -->
+        <ng-container *ngFor="let sloat of availableSloats">
+            <div class="inner-grid-system" (click)="selectSloat(sloat)"
+                [ngClass]="{ 'selectedSlot' : sloat == selectedSloat}">{{sloat.open}}:00-{{sloat.close}}:00</div>
+        </ng-container>
+    </div>
+
+    <div class="sepertaor"></div>
+
+    <div class="second-row-main">
+        <div class="first-inner-row-main">
+            <p>
+                Bring this vaccination record to every vaccination or medical visit. check with your health care
+                provider to make sure you are notmissing any doses of routinely recommended vaccines.
+            </p>
+        </div>
+        <div class="second-inner-row-main">
+            <p>
+                For more information about COVID-19 and COVID-19 vaccine, visit
+                cdc.gov/coronavirus/2019-ncov/index.html.
+            </p>
+        </div>
+        <div class="third-inner-row-main">
+            <p>
+                You can report possible adverse reactions following COVID-19 vaccination to the Vaccine Adverse Event
+                Reporting System (VAERS) at vaers.hhs.gov.
+            </p>
+        </div>
+        <div class="sepertaor"></div>
+        <div class="third-row-main">
+            <div class="first-inner-row-third">
+                <p>
+                    Bring this vaccination record to every vaccination or medical visit. check with your health care
+                    provider to make sure you are notmissing any doses of routinely recommended vaccines.
+                </p>
+            </div>
+            <div class="second-inner-row-third">
+                <p>
+                    For more information about COVID-19 and COVID-19 vaccine, visit
+                    cdc.gov/coronavirus/2019-ncov/index.html.
+                </p>
+            </div>
+            <div class="third-inner-row-third">
+                <p>
+                    You can report possible adverse reactions following COVID-19 vaccination to the Vaccine Adverse
+                    Event Reporting System (VAERS) at vaers.hhs.gov.
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="fourth-row">
+        <div class="text-right last-col">
+            <button class="btn btn-primary next-btn1" (click)="goBack()">Back</button>
+            <button [disabled]="isLoading" class="btn btn-primary next-btn" (click)="OnSubmit()">
+                <i class="fa mr-2" [ngClass]="{'fa-spin fa-spinner': isLoading}"></i>
+                Save</button>
+        </div>
+    </div>
+</div>

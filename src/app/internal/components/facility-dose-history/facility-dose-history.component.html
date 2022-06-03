@@ -1,0 +1,140 @@
+
+<div class="first-do-main"><span class="dose-main">Dose History</span>
+        <ng-container *ngFor="let dose of doseHistory">
+        <div class="first-row" style="text-decoration: underline;">{{
+                dose.doseNumber == 'FIRST' ? '1st Dose':
+                dose.doseNumber == 'SECOND' ? '2nd Dose':
+                dose.doseNumber == 'OTHER' ? 'Other Dose' : ''}}</div> 
+        <div class="inner-main">
+                <div class="inner-first-col" >
+                        <div class="inner-heading"><b>Vaccine Administration Information</b> ( for Immunizer/Pharmacist
+                                use only )</div>
+                        <div class="col-third-main">
+                                <div class="inner-col-third">
+                                        <ul class="main-ul-inner">
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Administering Immunizer Name & Title :
+                                                        </li> <span class="main-inner-span"> {{(dose?.administrationName
+                                                                )?(dose?.administrationName ):'--'}} </span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Paitent Number :</li> <span
+                                                                class="main-inner-span">{{(dose?.
+                                                                        patientNumber)?(dose?.patientNumber):'--'}}</span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Administration Date :</li> <span
+                                                                class="main-inner-span">{{(dose?.administrationDate)?(dose?.administrationDate
+                                                                        |
+                                                                        date :
+                                                                        'dd-MM-yy'):'--'}}</span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">VIS Date :</li> <span
+                                                                class="main-inner-span">{{(dose?.VISDate)?(dose?.administrationDate
+                                                                        |
+                                                                        date :
+                                                                        'dd-MM-yy'):'--'}}</span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Volume (mL) :</li> <span
+                                                                class="main-inner-span">{{(dose?.volume)?(dose?.volume):'--'}}</span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Exp. Date :</li> <span
+                                                                class="main-inner-span">{{(dose?.expDate)?(dose?.expDate
+                                                                        | date
+                                                                        :'dd-MM-yy'):'--'}}</span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Site :</li> <span
+                                                                class="main-inner-span">{{dose?.site}}</span>
+                                                </div>
+
+                                        </ul>
+                                </div>
+                                <div class="inner-col-fourth">
+                                        <ul class="main-ul-inner">
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Vaccine :</li> <span
+                                                                class="main-inner-span">{{(dose?.vaccine)?(dose?.vaccine):'--'}}</span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Manufacturer :</li> <span
+                                                                class="main-inner-span">{{(dose?.manufacturer)?(dose?.manufacturer):'--'}}</span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Lot #</li> <span
+                                                                class="main-inner-span">{{(dose?.lot)?(dose?.lot):'--'}}</span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Route :</li> <span
+                                                                class="main-inner-span">{{(dose?.route)?(dose?.route):'--'}}</span>
+                                                </div>
+                                                <div class="inner-main-for">
+                                                        <li class="main-inner-li">Patient Temperature :</li> <span
+                                                                class="main-inner-span">{{(dose?.patientTemp)?(dose?.patientTemp):'--'}}</span>
+                                                </div>
+
+                                        </ul>
+                                </div>
+                        </div>
+                </div>
+                <div class="inner-second-col"><b class="main-b">Clinic Information</b>
+                        <div class="inner-col-fourth">
+                                <ul class="main-ul-inner">
+                                        <div class="inner-main-for">
+                                                <li class="main-inner-li">Clinic ID :</li> <span
+                                                        class="main-inner-span">{{(dose?.clinicInfo?.clinicId)?(dose?.clinicInfo?.clinicId):'--'}}</span>
+                                        </div>
+                                        <div class="inner-main-for">
+                                                <li class="main-inner-li">Clinic Name :</li> <span
+                                                        class="main-inner-span">{{(dose?.clinicInfo?.name)?(dose?.clinicInfo?.name):'--'}}</span>
+                                        </div>
+                                        <div class="inner-main-for">
+                                                <li class="main-inner-li">Store Number :</li> <span
+                                                        class="main-inner-span">{{(dose?.clinicInfo?.storeNumber)?(dose?.clinicInfo?.storeNumber):'--'}}</span>
+                                        </div>
+                                        <div class="inner-main-for">
+                                                <li class="main-inner-li">Telephone :</li> <span
+                                                        class="main-inner-span">{{(dose?.clinicInfo?.telephone)?(dose?.clinicInfo?.telephone):'--'}}</span>
+                                        </div>
+                                        <div class="inner-main-for">
+                                                <li class="main-inner-li">Address :</li> <span
+                                                        class="main-inner-span">{{(dose?.clinicInfo?.address)?(dose?.clinicInfo?.address):'--'}}</span>
+                                        </div>
+                                        <div class="inner-main-for">
+                                                <li class="main-inner-li">City :</li> <span
+                                                        class="main-inner-span">{{(dose?.clinicInfo?.city)?(dose?.clinicInfo?.city):'--'}}</span>
+                                        </div>
+                                        <div class="inner-main-for">
+                                                <li class="main-inner-li">State :</li> <span
+                                                        class="main-inner-span">{{(dose?.clinicInfo?.state)?(dose?.clinicInfo?.state):'--'}}</span>
+                                        </div>
+                                        <div class="inner-main-for">
+                                                <li class="main-inner-li">Zip :</li> <span
+                                                        class="main-inner-span">{{(dose?.clinicInfo?.zip)?(dose?.clinicInfo?.zip):'--'}}</span>
+                                        </div>
+
+                                </ul>
+                        </div>
+                </div>
+
+        </div>
+        </ng-container>
+</div>
+
+<div class="main-photo" *ngIf="!isLoading && doseHistory.length == 0">
+        <div class="img-dose">
+                <img src="../../../../assets/images/Vaccsynk.svg">
+                <div class="no-data">No dose history found!</div>
+        </div>
+</div>
+<div class="item">
+        <ngx-skeleton-loader *ngIf="isLoading" count="9" animation="pulse" [theme]="{
+           height: '50px',
+           width: '96%',
+          'margin-left': '29px',
+          'background-color': 'rgb(127, 140, 141);'
+        }"></ngx-skeleton-loader>
+</div>

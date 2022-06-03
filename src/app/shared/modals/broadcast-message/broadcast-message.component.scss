@@ -1,0 +1,106 @@
+.select-heading-main {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 20px;
+    .close-btn {
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    .heading-title {
+        font-size: 15px;
+        line-height: 25px;
+        color: #333333;
+    }
+}
+
+.main-content-modal-wrapper {
+    padding: 0px 30px 30px;
+}
+
+.main-grid-area {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    text-align: center;
+    .inner-grid-system {
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #E5E5E5;
+        border-radius: 100%;
+        cursor: pointer;
+    }
+    .active{
+        background: #14649C;
+        color: #fff;
+        border: 1px solid #14649c;
+    }
+}
+
+.second-row-main {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    .left-col {
+        margin-right: 30px;
+        display: flex;
+        align-items: center;
+        width: 70%;
+        .mat-checkbox{
+            margin-right: 20px !important;
+        }
+    }
+    .right-col{
+        input{
+            padding: 13px 30px;
+            border-radius: 5px !important;
+        }
+       
+    }
+}
+
+.input-grop-main {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    .dase-incon {
+        margin: 0px 40px;
+    }
+    textarea{
+    height: 140px;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    padding: 20px;
+    resize: none;
+    }
+}
+
+.box-btn-row {
+    margin-top: 30px;
+    text-align: right;
+    margin-bottom: 0px;
+    .canel-btn {
+        margin-right: 20px;
+    }
+    .btn-comman {
+        padding: 7px 20px;
+        background: none;
+        border: 1px solid #14649C;
+        border-radius: 5px;
+        font-size: 15px;
+        line-height: 19px;
+        text-align: center;
+        letter-spacing: 0.02em;
+        color: #14649c;
+    }
+    .save-btn {
+        background: #14649c;
+        color: #fff;
+    }
+}
+
+input:focus,textarea:focus {outline: none;}

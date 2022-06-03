@@ -1,0 +1,55 @@
+
+
+<div class="main"  [formGroup]="addVaccinatorForm">
+<div class="main-label">Vaccinator</div>
+<div class="grid-main">
+    <div class="inner-grid">
+        <input type="text" maxlength="50" appInputRestriction="noSpecialChars" [ngClass]="{'is-invalid' : (f.firstname.errors && (f.firstname.touched || submitted))}" formControlName="firstname" placeholder="First Name*" class="text-box-inner" maxlength="50">
+        <input type="text" OnlyNumeric maxlength="50" [ngClass]="{'is-invalid' : (f.NPINumber.errors && (f.NPINumber.touched || submitted))}" OnlyNumeric formControlName="NPINumber" maxlength="26" placeholder="NPI Number*" class="text-box-inner">
+        <input type="text" OnlyNumeric maxlength="50" [ngClass]="{'is-invalid' : (f.Licence.errors && (f.Licence.touched || submitted))}" OnlyNumeric formControlName="Licence" maxlength="26" placeholder="License Number*" class="text-box-inner">
+        <input type="text" OnlyNumeric maxlength="50" [ngClass]="{'is-invalid' : (f.CPRNumber.errors && (f.CPRNumber.touched || submitted))}" OnlyNumeric formControlName="CPRNumber" maxlength="26" placeholder="CPR Number*" class="text-box-inner">
+    </div>
+    <div class="inner-grid">
+        <input type="text"  [ngClass]="{'is-invalid' : (f.email.errors && (f.email.touched || submitted))}" formControlName="email" placeholder="Email*" class="text-box-inner-second" maxlength="50">
+        <div class="inner-grid-main date-picker-grid-main">
+            <input class="text-box-inner-third" 
+                [ngClass]="{'is-invalid' : (f.LicenceExpDate.errors && (f.LicenceExpDate.touched || submitted))}" type="text"
+                formControlName="LicenceExpDate" placeholder="Expiration Date(MM/DD/YYYY)*" [minDate]="today" bsDatepicker>
+        </div>
+        <div class="inner-grid-main date-picker-grid-main">
+            <input class="text-box-inner-third" 
+                [ngClass]="{'is-invalid' : (f.NPIExpDate.errors && (f.NPIExpDate.touched || submitted))}" type="text"
+                formControlName="NPIExpDate" placeholder="Expiration Date(MM/DD/YYYY)*" [minDate]="today" bsDatepicker>
+        </div>
+        <div class="inner-grid-main date-picker-grid-main">
+            <input class="text-box-inner-third" 
+                [ngClass]="{'is-invalid' : (f.CPRExpDate.errors && (f.CPRExpDate.touched || submitted))}" type="text"
+                formControlName="CPRExpDate" placeholder="Expiration Date(MM/DD/YYYY)*" [minDate]="today" bsDatepicker>
+        </div>
+    </div>
+</div>
+
+<label class="sign-main">Vaccinator Signature*</label>
+<input type="file" accept="image/,exe,gif,.jpg,.jpeg,.png,.doc,.docx,.pdf" #file4
+    [ngClass]="{'is-invalid': (f.signature.errors && (f.signature.touched || submitted))}" hidden
+    (change)="uploadImage($event,'signature' )" hidden formControlName="signature" />
+<div class="signature-main">
+    <div class="inner-main">
+        <div class="signature-main-inner"><img src="assets/images/form.svg"></div>
+        <div class="signature-text"> {{f.signature.value?.name ? f.signature.value.name : 'Upload digital signature image *'}} </div>
+        <div class="signature-button"><button class="browse-btn-ab" (click)="file4.click()"><img
+                    class="inner-upload-main" src="assets/images/upload.svg">Browse</button>
+        </div>
+    </div>
+</div>
+
+<div class="below-btn">
+    <div class="main-inner-btn">
+        <button class="cancel-btn" [disabled]="loader" [routerLink]="[AppRoutes.ROOT, AppRoutes.VACCINATOR]" >Cancel</button>
+        <button [disabled]="loader" class="submit-btn" (click)="onSumit()">
+            <i class="fa mr-2"
+                        [ngClass]="{'fa-spin fa-spinner': loader}"></i>
+            Submit</button>
+    </div>
+</div>
+</div>

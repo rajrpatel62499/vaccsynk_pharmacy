@@ -1,0 +1,374 @@
+.select-heading-main {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 20px;
+    .close-btn {
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    .heading-title {
+        font-size: 18px;
+        line-height: 22px;
+        color: #333333;
+        font-weight: 500;
+    }
+}
+
+.main-content-modal-wrapper {
+    padding: 0px 50px 30px;
+}
+
+.main-grid-area {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    text-align: center;
+    grid-column-gap: 9px;
+    .inner-grid-system {
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #E5E5E5;
+        border-radius: 100%;
+        cursor: pointer;
+    }
+    .active{
+        background: #14649C;
+        color: #fff;
+        border: 1px solid #14649c;
+    }
+}
+
+// .second-row-main {
+//     display: flex;
+//     align-items: center;
+//     margin-top: 30px;
+//     margin-left: 38px;
+
+//     .left-col {
+//         // margin-right: 30px;
+//         display: flex;
+//         align-items: center;
+//         width: 44%;
+//         .mat-checkbox{
+//             margin-right: 20px !important;
+//         }
+//     }
+//     .right-col{
+//         input{
+//             padding: 13px 30px;
+//             border-radius: 5px !important;
+//         }
+       
+//     }
+// }
+
+.input-grop-main {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    // border-bottom: 1px solid #E5E5E5;
+    padding: 10px 0px;    
+    // margin-left: 38px;
+
+    .dase-incon {
+        margin: 0px 25px;
+    }
+    input{
+        padding: 11px 20px;
+        border-radius: 5px !important;
+    }
+    select {
+        padding: 10px 10px;
+        border-radius: 5px !important;
+        margin-left: 0px;
+        z-index: 1;
+        border: 1px solid #CFD0D1;
+        outline: none;
+        width: 100%;
+        appearance: none;
+        position: relative;
+    }
+    
+}
+
+.box-btn-row {
+    margin-top: 30px;
+    text-align: right;
+    margin-bottom: 0px;
+    .canel-btn {
+        margin-right: 20px;
+    }
+    .btn-comman {
+        padding: 7px 20px;
+        background: none;
+        border: 1px solid #14649C;
+        border-radius: 5px;
+        font-size: 15px;
+        line-height: 19px;
+        text-align: center;
+        letter-spacing: 0.02em;
+        color: #14649c;
+    }
+    .save-btn {
+        background: #14649c;
+        color: #fff;
+    }
+    .save-btn[disabled] {
+        opacity: 0.6;
+    }
+}
+
+option.ng-star-inserted {
+    z-index: 999999;
+}
+
+input:focus,textarea:focus {outline: none;}
+
+/*the container must be positioned relative:*/
+.custom-select {
+    position: relative;
+    font-family: Arial;
+  }
+  
+  .custom-select select {
+    display: none; /*hide original SELECT element:*/
+  }
+  
+  .select-selected {
+    background-color: DodgerBlue;
+  }
+  
+  /*style the arrow inside the select element:*/
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  
+  /*point the arrow upwards when the select box is open (active):*/
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }
+  
+  /*style the items (options), including the selected item:*/
+  .select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  /*style items (options):*/
+  .select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    height:200px;
+    overflow:hidden;
+  }
+  
+  /*hide the items when the select box is closed:*/
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+//   .right-col {
+//     width: 26%;
+// }
+
+
+.max-dose-day{
+    position: relative;
+    left: -4px;
+}
+
+// .second-row-main{
+//     .right-col{
+//         margin-left: auto;
+//         margin-right: 0;
+//         width: 26%;
+//         display: flex;
+//         justify-content: flex-end;
+//         input{
+//             border-radius: 5px !important;
+//             width: 152px;
+//             padding: 10px 5px;
+//             text-align: center;
+//             margin-right: 31px;
+//         }
+//     }
+// }
+input.vaccine {
+    width: 71%;
+    margin-right: 25px;
+    padding: 21px 24px;
+    height: 40px;
+    margin-top: 13px;
+
+}
+input.slot {
+    width: 71%;
+    margin-right: 25px;
+    padding: 21px 24px;
+    height: 40px;
+    margin-top: 13px;
+}
+
+.main-button-below {
+    display: flex;
+    padding: 20px 0px;
+}
+::ng-deep .mat-dialog-container {
+    // height: 506px !important;
+    // width: 600px !important;
+    margin: auto !important;
+}
+
+label.vaccine {
+    width: 58%;
+    padding: 0px;
+    margin-top: 14px;
+    font-weight: 500;
+}
+label.max {
+    width: 68%;
+    padding: 0px;
+    margin-top: 23px;
+    font-weight: 500;
+}
+
+.edit-timing-modal-main .second-row-main .right-col {
+    display: flex;
+    align-items: center;
+}
+
+.edit-timing-modal-main .second-row-main .right-col label.max-dose-day {
+    left: 0;
+    margin-right: 20px;
+    width: 70%;
+}
+
+.up-arrow-main img {
+    width: 15px;
+}
+.down-arrow-main img {
+    width: 15px;
+}
+
+.open-times-and-close-time {
+    margin-top: 25px;
+    display: flex;
+    .close-left-time {
+        margin-right: 30px;
+    }
+    .right-col-inputs-combo-main {
+        display: flex;
+        margin-top: 8px;
+       
+    }
+    
+}
+
+.right-col-inputs-combo-main .comman-col .input-area-hours input {
+    padding: 5px;
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.open-times-and-close-time .right-col-inputs-combo-main .comman-col {
+    text-align: center;
+    margin: 0px 15px;
+}
+// .comman-col:first-child, .comman-col:last-child {
+//     margin: 0 !important;
+// }
+.up-arrow-main {
+    cursor: pointer;
+    display: none;
+}
+
+.down-arrow-main{
+    cursor: pointer;
+    display: none;
+}
+
+.down-arrow-main img {
+    transform: rotate(180deg);
+}
+
+.open-times-and-close-time .left-labal-main {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input-grop-main {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    align-items: center;
+    .comman-col{
+        margin-right: 20px !important;
+        width: 33.33%;
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        &:last-child{
+            margin-right: 0px  !important;
+        }
+    }
+}
+
+input[type=number] {
+    -moz-appearance: textfield !important;
+    -webkit-appearance: textfield !important;
+    appearance: textfield !important;
+  }
+
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.select-options{
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        background: url(../../../../assets/images/down-arrow-main.svg)no-repeat;
+        background-size: 11px;
+        width: 11px;
+        height: 11px;
+        right: 15px;
+        top: 28px;
+        z-index: 999999;
+        bottom: 0;
+        margin: auto;
+    }
+}

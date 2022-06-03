@@ -1,0 +1,24 @@
+<div class="main-popup-clas">
+    <div class="img-class">
+        <img src="assets/images/email-1.svg" />
+    </div>
+    <div class="verify-heading">Verify your e-mail address</div>
+    <p>Please verify your email address to get started.</p>
+    <div class="email-id-main">
+        <label class="email">Email ID -</label>
+        <span class="email-id-origin">{{data.email}}</span>
+    </div>
+    <ng-otp-input #ngOtpInput OnlyNumeric (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+
+
+    <div class="click-verify-main">
+        <button (click)="verifyOtp()" class="click-to-verify"><i class="fa"
+                [ngClass]="{'fa-spin mr-2 fa-spinner': isLoading}"></i>Click to verify</button>
+    </div>
+    <div class="link-btn"> <a (click)="resendOtp()" class="click-to-resend-otp link-btn">Resend OTP</a></div>
+
+    <button class="cross-btn" (click)="onNoClick()">
+        <img class="cross-btn-align" src="assets/images/cross.svg" />
+    </button>
+
+</div>

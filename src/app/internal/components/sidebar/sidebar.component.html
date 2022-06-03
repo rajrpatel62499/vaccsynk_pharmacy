@@ -1,0 +1,55 @@
+
+ <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
+   <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+             <div class="close-nav-bar">
+                <img src="../../../../assets/images/close-icon.svg" alt="close" title="close">
+             </div>
+            <div class="brand-sidebar">
+               <h1 class="logo-wrapper">
+                  <a class="brand-logo darken-1 mt-4">
+                     <img src="../../../../assets/images/logo.svg" style="cursor: pointer; outline: none;"
+                        [routerLink]="[AppRoutes.ROOT,AppRoutes.DASHBOARD]" alt="materialize logo" />
+                  </a>
+               </h1>
+            </div>
+            <div class="main-nav-item">
+               <ul class="nav-item-inner">
+                  <li class="nav-list-parents" routerLinkActive="active" [routerLink]="[AppRoutes.ROOT,AppRoutes.DASHBOARD]" >
+                     <a class="navlinks" title="Dashboard" routerLinkActive="active"  >Dashboard</a>
+                  </li>
+                  <li class="nav-list-parents" routerLinkActive="active" [routerLink]="[AppRoutes.ROOT,AppRoutes.USERS]" >
+                     <a class="navlinks" title="Dashboard" routerLinkActive="active"  >Users</a>
+                  </li>
+                  <li class="nav-list-parents" routerLinkActive="active" [routerLink]="[AppRoutes.ROOT,AppRoutes.FACILITIES]" >
+                     <a class="navlinks" title="Dashboard" routerLinkActive="active"  >Facilities</a>
+                  </li>
+                  <li class="nav-list-parents" routerLinkActive="active"  [routerLink]="[AppRoutes.ROOT,AppRoutes.VACCINATOR]" >
+                     <a class="navlinks" title="Vaccinator" routerLinkActive="active" >Vaccinator</a>
+                  </li> 
+                  <li class="nav-list-parents" routerLinkActive="active"  [routerLink]="[AppRoutes.ROOT,AppRoutes.SETTINGS]" >
+                      <a class="navlinks" title="Settings" routerLinkActive="active" >Settings</a>
+                  </li>            
+               </ul>
+            </div>
+            <div class="logout-main ml-5">
+               <img class="mr-2" src="../../../../assets/images/logout.svg" alt="logout">
+               <span class="logout-text" (click)="auth.logoutUser()">Logout</span>
+            </div>
+          </ul>
+      </div>
+      <!-- /#sidebar-wrapper -->
+      <!-- Page Content -->
+      <div class="logo-div-for-mobile">
+         <img src="../../../../assets/images/logo.svg" alt="logo" title="logo">
+      </div>
+      <a href="#" class="btn btn-default desktop-btn-none" id="menu-toggle"><span class="glyphicon glyphicon-th-list"></span></a>
+      <!-- /#page-content-wrapper -->
+   </div>
+   
+
+
+ </aside>
+

@@ -1,0 +1,392 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+  // ------------END of Media Screen Mixing--------------// 
+.heading-row-main {
+    padding: 20px 30px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .left-heading-col {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 25px;
+        color: #14649C;
+    }
+   
+}
+
+
+.main-form-wrapper {
+    padding: 20px 30px;
+
+    .first-row-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+}
+
+
+
+.under-line-blue {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    color: #14649C;
+    text-decoration: underline;
+}
+
+
+.text-short-main {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 25px;
+    color: #333333;
+    margin: 20px 0px;
+}
+
+.date-picker-grid{
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        background: url(../../../../assets/images/date-picker-main.svg) no-repeat;
+        background-size: 18px;
+        width: 20px;
+        height: 19px;
+        top: 0px;
+        bottom: 0px;
+        right: 15px;
+        margin: auto;
+    }
+}
+
+.date-picker-grid-main{
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        background: url(../../../../assets/images/date-picker-main.svg) no-repeat;
+        background-size: 18px;
+        width: 20px;
+        height: 19px;
+        top: 0px;
+        bottom: 0px;
+        right: 15px;
+        margin: auto;
+    }
+}
+
+
+.grid-for-input-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e5e5;
+    @include max-mq(1550){
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+.signature-main {
+    border: 1px dashed #CFD0D1;
+    padding: 14px 0px;
+    border-radius: 5px;
+}
+
+.signature-text {
+    text-align: center;
+    color: #959596;
+    padding: 12px;
+}
+.signature-main-inner {
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+}
+
+// button.browse-btn-ab::before {
+   
+// }
+
+button.browse-btn-ab {
+    bottom: 10px;
+    background: #14649c;
+    border: 1px solid #14649c;
+    color: #fff;
+    padding: 6px 30px;
+    border-radius: 5px;
+    margin: auto !important;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+}
+
+button.browse-btn-ab img.inner-upload-main {
+    width: 12px;
+    margin-right: 8px;
+}
+.signature-main {
+    border: 1px dashed #CFD0D1;
+    padding: 29px 89px;
+    border-radius: 5px;
+}
+
+.radio-grid-main {
+    display: flex;
+    align-items: center;
+    .radio-group {
+        display: flex;
+        margin-left: 20px;
+        .first-radio {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            input{
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+            }
+            label{
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+.signature-grid {
+    display: flex;
+    position: relative;
+    padding-bottom: 40px;
+    span{
+        display: block;
+        width: 30%;
+        padding: 0px 17px;
+
+    }
+    input{
+        height: 65px;
+    }
+    .sign-main {
+        position: absolute;
+        right: 0;
+        bottom: -10px;
+        button.clear-btn-ab {
+            background: #14649c;
+            color: #fff;
+            border: none;
+            padding: 10px 40px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        span.upload-main {
+            position: absolute;
+            right: 290px;
+            bottom: 10px;
+        }
+    }
+    
+}
+
+
+.last-button-row {
+    text-align: right;
+    margin-top: 40px;
+
+    button{
+        padding: 10px 40px;
+        font-size: 15px;
+        background: none;
+        border: 1px solid #14649C;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+    button.back-btn {
+        margin-right: 10px;
+        color: #14649C;
+    }
+    button.next-btn {
+        background: #14649c !important;
+        color: #ffff;
+    }
+}
+
+.is-invalid {
+    border: 1px solid red !important;
+}
+
+.is-invalid-one{
+    border: 1px solid red !important;
+    border-radius: 12px;
+}
+input[type=radio].is-invalid-radio + label::before {
+    outline: red;
+    border-color: red !important;
+}
+label::before + input[type=radio].is-invalid-radio {
+    outline: red;
+    border-color: red !important;
+}
+.show-error {
+    display: none;
+}
+
+
+button{
+    cursor: pointer;
+}
+
+#signaturePad{
+    border: 2px solid lightgrey;
+}
+
+.manufacturedropdown {
+    background: #FFFFFF;
+    border: 1px solid #CFD0D1;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 100%;
+    padding: 15px 30px;
+    outline: none !important;
+}
+
+.is-invalid + .signature-main {
+    border: 1px dashed red !important;
+}
+
+.btn-group {
+    width: 100%;
+    bottom: 0px !important;
+    .btn{
+        width: 100%;
+        margin: 0px;
+        &:focus{
+            box-shadow: none;
+            outline: none;
+        }
+    }
+    .dropdown-menu{
+        box-shadow: 0px 0px 9px #d2d1d1;
+        border-radius: 10px;
+        li{
+            a{
+                padding: 10px 20px;
+                font-size: 14px;
+                // border-bottom: 1px solid #ccc;
+            }
+            &:last-child{
+                a{
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+button#button-animated {
+    background: #FFFFFF;
+    border: 1px solid #CFD0D1;
+    box-sizing: border-box;
+    border-radius: 10px;
+    // width: 548px;
+    padding: 15px 30px;
+    // color: #848484;
+    color: #000;
+    /* margin-bottom: 21px; */
+    outline: none !important;
+    text-align: left;
+    &::after{
+        position: absolute;
+        content: '';
+        right: 20px;
+        top: 3px;
+        bottom: 0;
+        margin: auto;
+        font-size: 18px;
+    }
+}
+
+ul#dropdown-animated {
+    width: 100%;
+    text-align: center;
+}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: left;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+    
+    bottom: 31px;
+}
+
+// option {
+//     padding: 88px 0px;
+//     height: 100%!important;
+// }
+
+input::placeholder {
+    color: #000;
+}
+
+.signature_progress {
+    position: relative;
+    top     : 50px;
+    height  : 20px;
+}
+
+.progress-bar-striped {
+    background-color: #14649C !important;
+}
+
+.progress-bar.active,
+.progress.active .progress-bar {
+    -webkit-animation: progress-bar-stripes 2s linear infinite !important;
+    -o-animation     : progress-bar-stripes 2s linear infinite !important;
+    animation        : progress-bar-stripes 2s linear infinite !important;
+}

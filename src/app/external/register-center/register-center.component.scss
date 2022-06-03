@@ -1,0 +1,320 @@
+
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }   
+    button.btn-comman {
+        padding: 10px 40px;
+        font-size: 15px;
+        background: #14649C;
+        border: 1px solid #14649C;
+        color: #fff;
+        box-sizing: border-box;
+        border-radius: 5px;
+        @include max-mq(1200){
+            padding: 9px 30px;
+            font-size: 14px;
+        }
+        @include max-mq(567){
+            padding: 7px 20px;
+            font-size: 12px;
+        }
+    }
+    img.logo-img {
+        width: 160px;
+        margin-bottom: 20px;
+        @include max-mq(1500){
+            width: 110px;
+        }
+
+    }
+.register-page-main {
+    margin-top: 60px;
+    margin-bottom: 100px;
+    background: #FFFFFF;
+    // border: 1px solid #CFD0D1;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: auto;
+    width: 100%;
+    .small-heading {
+        padding: 0px 30px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #E5E5E5;
+        padding-bottom: 20px;
+        @include max-mq(567){
+            padding: 0px;
+        }
+    }
+    a.href-class {
+        color: cornflowerblue;
+        text-decoration: underline;
+    }
+    form.register-form {
+        width: 100%;
+        padding: 0px 30px;
+        @include max-mq(567){
+            padding: 0px 20px;
+        }
+        .comman-row {
+            // display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            position: relative;
+            @include max-mq(567){
+                flex-direction: column;
+                align-items: self-start;
+            }
+            label {
+                margin-bottom: 0;
+                width: 100%;
+                font-size: 16px;
+                line-height: normal;
+                color: #333;
+                padding: 8px 0px;
+                @include max-mq(1400){
+                    width: 70%;
+                    font-size: 13px;
+                    padding: 8px 0px;
+                }
+                @include max-mq(1500){
+                    width: 53%;
+                }
+                @include max-mq(1200){
+                    width: 45%;
+                }
+                @include max-mq(1100){
+                    width: 100%;
+                }
+                span{
+                    color: red;
+                }
+            }
+            input[type="text"] {
+                width: 100%;
+                padding: 6px 15px;
+                border: 1px solid #CFD0D1;
+                border-radius: 5px;
+                outline: none !important;
+            }
+            .show-error {
+                position: absolute;
+                left: 40%;
+                right: 0;
+                bottom: -21px;
+                @include max-mq(991){
+                    left: 30%;
+                }
+                @include max-mq(567){
+                    left: 0;
+                }
+            
+                small {
+                    color: red;
+                    display: block;
+
+                }
+            }
+         
+        }
+       
+        
+    }
+    .text-right {
+        // width: 45%;
+        // padding: 0px 30px;
+        margin-top: 30px;
+    }
+}
+
+
+.add-label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 30px;
+    margin-bottom: 20px;
+    color: #333333;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+
+.main-inn-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    @include max-mq(1500){
+        grid-column-gap: 30px;
+    }
+    @include max-mq(1400){
+        grid-column-gap: 30px;
+    }
+    @include max-mq(991){
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.grid-system-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    @include max-mq(1500){
+        grid-column-gap: 30px;
+    }
+    @include max-mq(1400){
+        grid-column-gap: 30px;
+    }
+    @include max-mq(991){
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.is-invalid {
+    border: 1px solid red !important;
+}
+input[type=radio].is-invalid-radio + label::before {
+    outline: red;
+    border-color: red !important;
+}
+label::before + input[type=radio].is-invalid-radio {
+    outline: red;
+    border-color: red !important;
+}
+.show-error {
+    display: none;
+}
+
+.alert-main-second{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px !important;
+    // display: none;
+}
+.alert-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px !important;
+    display: none;
+}
+.alert.alert-success.alert-dismissible.ng-star-inserted {
+    width: 50% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+ 
+}
+
+h1.heading1 {
+    position: relative;
+    bottom: 305px;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 40px;
+    left: 46px;
+    color: #333333;
+
+    }
+
+    .header-starting {
+        padding: 20px 38px;
+        @include max-mq(1500){
+            padding: 20px 30px;
+        }
+        @include max-mq(567){
+            padding: 20px 20px;
+        }
+    }
+
+    .forgot-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    span {
+        margin: auto;
+        padding: 8px 0px;
+    }
+
+.register-page-main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    .inner-wrapper-main {
+        width: 60%;
+        margin: auto;
+        height: 850px;
+        overflow: auto;
+        scrollbar-width: none;
+        // border: 1px solid #ccc;
+        border-radius: 10px;
+        padding-bottom: 30px; 
+        @include max-mq(1660){
+            height: 800px;
+        }
+        @include max-mq(1500){
+            height: 750px;
+        }
+        @include max-mq(1100){
+            height: 700px;
+            width: 70%;
+            padding-bottom: 20px;
+        }
+        @include max-mq(991){
+            width: 80%;
+            
+        }
+        @include max-mq(567){
+            width: 95%;
+            height: 550px;
+        }
+    }
+}
+
+
+.heading{
+    @include max-mq(1500){
+        font-size: 24px;
+    }
+    @include max-mq(567){
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+}
+
+
+.mat-checkbox#mat-checkbox-1 {
+    margin-right: 14px;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+    padding: 13px 0px;
+}
+

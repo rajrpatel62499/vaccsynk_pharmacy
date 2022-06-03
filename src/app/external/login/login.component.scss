@@ -1,0 +1,231 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+  // ------------END of Media Screen Mixing--------------// 
+
+
+.login-main-area {
+    height: 100%;
+    background: #F9F9F9;
+    .inner-login-page {
+        height: 100%;
+        align-items: center;
+        @include max-mq(1500){
+            overflow: hidden;
+        }
+        form{
+            @include max-mq(991){
+                width: 70%;
+            } 
+            @include max-mq(567){
+                width: 90%;
+            }    
+            .left-img{
+                    img {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        // width: 70%;
+                        width: 900px;
+                        @include max-mq(1660){
+                            width: 55%;
+                        }
+                    }
+            }
+            .right-login-card {
+                    background: #fff;
+                    padding: 50px 80px;
+                    border: 1px solid #CFD0D1;
+                    width: 550px;
+                    border-radius: 10px;
+                    margin-left: auto;
+                    position: relative;
+                    z-index: 9999;
+                    bottom: 28px;
+                    @include max-mq(1660){
+                        padding: 23px 60px;
+                        width: 510px;
+                        bottom: 1px;
+                    }
+                    @include max-mq(1500){
+                        padding: 30px 40px;
+                        width: 500px;
+                        bottom: 0px;
+                    }
+                    @include max-mq(1100){
+                        width: 400px;
+                        padding: 30px 30px;
+
+                    }
+                    @include max-mq(991){
+                        width: 100%;
+                    }
+                    @include max-mq(567){
+                        padding: 20px 20px;
+                    }
+                    img.logo-img {
+                        width: 160px;
+                        margin-bottom: 20px;
+                        @include max-mq(1500){
+                            width: 120px;
+                        }
+                        @include max-mq(1100){
+                            width: 100px;
+                            margin-bottom: 15px;
+                        }
+                    }
+                    .login-form{
+                        .login-row {
+                            margin-bottom: 30px;
+                            @include max-mq(1100){
+                                margin-bottom: 20px;
+                            }
+                        }
+                    }
+            }       
+        } 
+    }
+}
+
+button.btn{
+    display: block;
+    width: 100%;
+}
+span {
+    display: flex;
+    justify-content: center;
+    padding: 14px 0px;
+    @include max-mq(1100){
+        padding: 6px 0px;
+    }
+}
+a.link-text {
+    display: flex;
+    justify-content: center;
+    padding: 14px 0px;
+    @include max-mq(1100){
+        font-size: 14px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        
+    }
+}
+
+.invalid{
+    position: absolute;
+    background: red;
+    width: auto;
+    color: #fff;
+    padding: 2px 10px;
+    font-size: 10px;
+    line-height: 12px;
+    border-radius: 10px;
+    left: 0px;
+    bottom: -21px;
+}
+
+
+
+h1.heading1 {
+    position: relative;
+    bottom: 305px;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 40px;
+    left: 46px;
+    color: #333333;
+    .wel-text{
+        color: #14649C;
+        margin-right: 8px;
+    }
+    span.wel-text1 {
+     
+    }
+
+}
+
+img.logo-img1 {
+    position: absolute;
+    top:22px;
+    bottom: 0;
+    left: 56px;
+}
+
+.img-mains {
+    margin-left: 29px;
+}
+
+span.wel-text1 {
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 35px;
+    margin-bottom: 40px;
+    color: #adadad;
+    width: 70%;
+    word-break: break-word;
+}
+
+h1.heading-one {
+   
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 35px;
+    margin-bottom: 40px;
+    color: #adadad;
+    width: 70%;
+    word-break: break-word;
+    margin-left: 75px;
+    margin-top: 76px;
+    @include max-mq(1500){
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .wl-text{
+        color: #14649C;
+        font-size: 25px;
+        @include max-mq(1500){
+            margin-right: 10px;
+            font-size: 22px;
+        }
+    }
+}
+
+.heading{
+    @include max-mq(1500){
+        font-size: 23px;
+        line-height: 27px;
+        margin-bottom: 30px;
+    }
+    @include max-mq(1100){
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+}

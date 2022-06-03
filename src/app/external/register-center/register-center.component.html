@@ -1,0 +1,223 @@
+<div class="custom-container register-page-main">
+    <div class="inner-wrapper-main">
+        <div class="header-starting">
+            <img class="logo-img" src="../../../assets/images/logo.svg" title="logo" alt="logo">
+            <h1 class="heading">Registration to Vaccsynk</h1>
+        </div>
+    
+        <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="register-form"> 
+            <div class="main-inn-form">
+                <div class="left-col">
+            
+                    <div class="comman-row"  >
+                        <label>Pharmacy Name <span>*</span></label>
+                        <input 
+                        maxlength="60" appInputRestriction="noSpecialChars"
+                        [ngClass]="{'is-invalid' : (f.pharmacyName.errors && (f.pharmacyName.touched || submitted))}" 
+
+                    formControlName="pharmacyName" type="text"/>
+                    <!-- <div class="show-error" *ngIf="submitted && f.pharmacyName.errors">
+                        <small *ngIf="f.pharmacyName.errors.required">Pharmacy Name is required</small>
+                    </div> -->
+                </div>
+                <div class="comman-row">
+                    <label>Phone Number <span>*</span></label>
+                    <input  OnlyNumeric
+                    [ngClass]="{'is-invalid' : (f.mobile.errors && (f.mobile.touched || submitted))}" 
+                    minlength="10"
+                    maxlength="10"
+                    formControlName="mobile" type="text"  />
+                    <!-- <div class="show-error" *ngIf="submitted && f.mobile.errors">
+                        <small *ngIf="f.mobile.errors.required">Phone Number is required</small>
+                        <small *ngIf="f.mobile.errors.maxlength">Mobile number should be {{f.mobile.errors.maxlength.requiredLength}} digit</small>
+                        <small *ngIf="f.mobile.errors.minlength">Mobile number should be {{f.mobile.errors.minlength.requiredLength}} digit</small>
+                    </div> -->
+        
+                        <!-- <div class="show-error" *ngIf="submitted && f.pharmacyName.errors">
+                            <small *ngIf="f.pharmacyName.errors.required">Pharmacy Name is required</small>
+                        </div> -->
+                    </div>
+                   
+                    <div class="comman-row">
+                        <label>Fax Number <span>*</span></label>
+                        <input 
+                        maxlength="15"
+                        [ngClass]="{'is-invalid' : (f.faxNo.errors && (f.faxNo.touched || submitted))}" 
+                        OnlyNumeric formControlName="faxNo" type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.faxNo.errors">
+                            <small *ngIf="f.faxNo.errors.required">Fax Number is required</small>
+                        </div> -->
+                    </div>
+                    <div class="comman-row">
+                        <label>Email Address <span>*</span></label>
+                        <input 
+                        [ngClass]="{'is-invalid' : (f.email.errors && (f.email.touched || submitted))}" 
+                        formControlName="email" type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.email.errors">
+                            <small *ngIf="f.email.errors.required">Email Address is required</small>
+                            <small *ngIf="f.email.errors.email">Email Address must be valid</small>
+                        </div> -->
+                    </div>
+                    <div class="comman-row">
+                        <label>NPI Number<span>*</span></label>
+                        <input OnlyNumeric
+                        maxlength="30"
+                            [ngClass]="{'is-invalid' : (f.NPINo.errors && (f.NPINo.touched || submitted))}" 
+                            formControlName="NPINo" type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.NPINo.errors">
+                            <small *ngIf="f.NPINo.errors.required">NPI Number is required</small>
+                        </div> -->
+                    </div> 
+                    <div class="comman-row">
+                        <label>Pharmacy State License Number<span></span></label>
+                        <input OnlyNumeric
+                            maxlength="30"
+                            [ngClass]="{'is-invalid' : (f.deaNumber.errors && (f.deaNumber.touched || submitted))}" 
+                            formControlName="deaNumber" type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.pharmacistNpiNumber.errors">
+                            <small *ngIf="f.pharmacistNpiNumber.errors.required">Pharmacist NPI Number is required</small>
+                        </div> -->
+                    </div>
+        
+                </div>
+                <!-- <div class="add-label">ADDRESS</div> -->
+                
+                <div class="right-col">
+                    <div class="comman-row">
+                        <label>Street Address<span>*</span></label>
+                        <input 
+                            [ngClass]="{'is-invalid' : (f.address.errors && (f.address.touched || submitted))}" 
+                            placeholder="" maxlength="200"
+                            ngx-google-places-autocomplete
+                            (onAddressChange)="handleAddressChange($event,'address')"
+                            formControlName="address" type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.address.errors">
+                            <small *ngIf="f.address.errors.required">Street Address is required</small>
+                        </div> -->
+                    </div>
+                    <div class="comman-row">
+                        <label>City<span>*</span></label>
+                        <input 
+                        [ngClass]="{'is-invalid' : (f.city.errors && (f.city.touched || submitted))}" 
+                        appInputRestriction="noSpecialChars"
+                        formControlName="city" type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.city.errors">
+                            <small *ngIf="f.city.errors.required">City is required</small>
+                        </div> -->
+                    </div>
+                    <div class="comman-row">
+                        <label>State<span>*</span></label>
+                        <input appInputRestriction="noSpecialChars"
+                        [ngClass]="{'is-invalid' : (f.state.errors && (f.state.touched || submitted))}" 
+                        
+                        formControlName="state" type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.state.errors">
+                            <small *ngIf="f.state.errors.required">State is required</small>
+                        </div> -->
+                    </div>
+                    <div class="comman-row">
+                        <label>Zip<span>*</span></label>
+                        <input OnlyNumeric
+                        [ngClass]="{'is-invalid' : (f.zip.errors && (f.zip.touched || submitted))}" 
+
+                        maxlength="10"
+                        formControlName="zip"  type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.zip.errors">
+                            <small *ngIf="f.zip.errors.required">Zip is required</small>
+                            <small *ngIf="f.zip.errors.pattern">Zip is required {{f.zip.errors.pattern|json}}</small>
+                        </div> -->
+                    </div>
+
+                    <div class="comman-row">
+                        <label>NCPDP Number<span>*</span></label>
+                        <input OnlyNumeric
+                        
+                        maxlength="30"
+                        [ngClass]="{'is-invalid' : (f.NCPDPNo.errors && (f.NCPDPNo.touched || submitted))}" 
+                        formControlName="NCPDPNo" type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.NCPDPNo.errors">
+                            <small *ngIf="f.NCPDPNo.errors.required">NCPDP Number is required</small>
+                        </div> -->
+                    </div>
+                    
+                    
+                 
+                </div>
+            </div>
+            
+            <div class="add-label">ADDITIONAL INFORMATION</div>
+
+
+        
+            <div class="grid-system-inner ">  
+        
+                <div class="comman-row">
+                    <label>Pharmacist Name<span>*</span></label>
+                    <input
+                    appInputRestriction="noSpecialChars"
+                    maxlength="60" 
+                        [ngClass]="{'is-invalid' : (f.pharmacistName.errors && (f.pharmacistName.touched || submitted))}" 
+                        formControlName="pharmacistName" type="text" />
+                    <!-- <div class="show-error" *ngIf="submitted && f.pharmacistName.errors">
+                        <small *ngIf="f.pharmacistName.errors.required">Pharmacist Name is required</small>
+                    </div> -->
+                </div>
+                <div class="comman-row">
+                    <label>Pharmacist Email<span>*</span></label>
+                    <input
+                        [ngClass]="{'is-invalid' : (f.pharmacistEmail.errors && (f.pharmacistEmail.touched || submitted))}" 
+                        formControlName="pharmacistEmail" type="text" />
+                    <!-- <div class="show-error" *ngIf="submitted && f.pharmacistEmail.errors">
+                        <small *ngIf="f.pharmacistEmail.errors.required">Pharmacist Email is required</small>
+                        <small *ngIf="f.pharmacistEmail.errors.email">Email Address must be valid</small>
+                    </div> -->
+                </div>
+                <div class="comman-row">
+                    <label>Pharmacist NPI Number<span>*</span></label>
+                    <input OnlyNumeric
+                        maxlength="30"
+                        [ngClass]="{'is-invalid' : (f.pharmacistNpiNumber.errors && (f.pharmacistNpiNumber.touched || submitted))}" 
+                        formControlName="pharmacistNpiNumber" type="text" />
+                    <!-- <div class="show-error" *ngIf="submitted && f.pharmacistNpiNumber.errors">
+                        <small *ngIf="f.pharmacistNpiNumber.errors.required">Pharmacist NPI Number is required</small>
+                    </div> -->
+                </div>
+                <div class="comman-row">
+                    <label>State License Number<span>*</span></label>
+                    <input OnlyNumeric
+                        maxlength="30"
+                        [ngClass]="{'is-invalid' : (f.stateLicenseNumber.errors && (f.stateLicenseNumber.touched || submitted))}" 
+                        formControlName="stateLicenseNumber" type="text" />
+                    <!-- <div class="show-error" *ngIf="submitted && f.pharmacistNpiNumber.errors">
+                        <small *ngIf="f.pharmacistNpiNumber.errors.required">Pharmacist NPI Number is required</small>
+                    </div> -->
+                </div>
+        
+            </div>
+            <div class="inner-third-col">
+                <section class="example-section">
+                     <mat-checkbox [formControl]="terms" class="example-margin"></mat-checkbox>By registering, I agree to <a class="href-class" href="https://vaccsynk.com/termsandconditions">T&C </a>& <a class="href-class" href="https://vaccsynk.com/privacypolicy">Privacy Policy</a>
+                </section>
+            </div>
+            <div class="text-right" style="text-align: center !important;">
+                <button class="btn-comman" 
+                [disabled]="isLoading" >
+                    <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading, 'fa-sign-in': !isLoading}"></i>
+                    Register Pharmacy
+                </button>
+            </div>
+            <div class="forgot-section">
+            
+                <span>or</span>
+                <span>Already have an Account? <a style="cursor: pointer;color: #14649C;" [routerLink]="[AppRoutes.ROOT,AppRoutes.LOGIN]">Login</a></span>
+            </div>
+            <div id="alret-box" class="alert-main-second">
+                <alert class="alert-main-second" *ngIf="showMsg" type="success" [dismissible]="true" > Thanks for registering with vaccsynk, Admin will verify the provided details & get back to you soon.</alert>
+            </div>
+        </form>
+    </div>
+    
+    <!-- <div id="alret-box"  class="alert-main">
+    <alert class="alert-main" *ngIf="showMsg" type="success" [dismissible]="true" ><strong>Hola !</strong>Thanks for registering with vaccsynk, Admin will verify the provided details & get back to you soon.</alert>
+</div> -->
+</div>

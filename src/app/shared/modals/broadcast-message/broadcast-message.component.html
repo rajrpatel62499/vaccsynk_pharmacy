@@ -1,0 +1,24 @@
+<div class="select-heading-main">
+    <div class="close-btn" (click)="onNoClick()">
+        <img src="../../../../assets/images/close-icon.svg" alt="clsoe" title="close">
+    </div>
+    <div class="heading-title">Message</div>
+
+</div>
+
+<div class="main-content-modal-wrapper">
+
+
+
+    <div class="input-grop-main">
+        <textarea [formControl]="message" type="text" placeholder="Write message here"></textarea>
+    </div>
+    <div class="box-btn-row">
+        <button class="canel-btn btn-comman" (click)="dialogRef.close()">Cancel</button>
+        <button class="save-btn  btn-comman" (click)="broadCastMessage()">  <i class="fa mr-2" [ngClass]="{'fa-spin fa-spinner': isLoading}"></i>Send</button>
+        <!-- <button class="air-bnb" href='#'>AirBnB</button> -->
+
+    </div>
+
+
+</div>

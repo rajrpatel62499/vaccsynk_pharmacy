@@ -1,0 +1,197 @@
+<div class="main-setting-wrapper">
+    <div class="headding-row-main">
+        <label class="setting-text">Settings</label>
+        <button class="change-password-main" (click)="changePassword()" >Change Password</button>
+    </div>
+    
+    <div class="seperate"></div>
+
+    <div class="small-heading-2 border-top-info">Pharmacy Info
+        <!-- <a class="edit-pharma" (click)="editProfile()" style="cursor: pointer;"><img
+                src="../../../assets/images/edit.svg" alt=""></a> -->
+    </div>
+
+
+    <ng-container *ngIf="userProfile">
+        <div class="faq-grid-system">
+            <div class="inner-grid-system">
+
+                <div class="first-row">
+                    <ul class="first-col">
+                        <li><span class="left-col">Pharmacy :</span> <span
+                                class="right-col">{{(userProfile?.pharmacyName)?(userProfile.pharmacyName):'--'}} </span></li>
+                        <li><span class="left-col">Phone Number :</span> <span
+                                class="right-col">{{(userProfile?.mobile)?(userProfile.mobile):'--'}}</span></li>
+                        <li><span class="left-col">Fax Number :</span> <span
+                                class="right-col">{{(userProfile?.faxNo)?(userProfile.faxNo):'--'}}</span></li>
+                        <li><span class="left-col">Email Address :</span> <span
+                                class="right-col">{{(userProfile?.email)?(userProfile.email):'--'}}</span></li>
+                        <li><span class="left-col">Street Address :</span> <span
+                                class="right-col">{{(userProfile?.address)?(userProfile.address):'--'}}</span></li>
+                        <li><span class="left-col">City :</span> <span class="right-col">{{(userProfile?.city)?(userProfile.city):'--'}}</span>
+                        </li>
+                        <li><span class="left-col">State :</span> <span class="right-col">{{(userProfile?.state)?(userProfile.city):'--'}}</span>
+                        </li>
+                        <li><span class="left-col">Zip :</span> <span class="right-col">{{(userProfile?.zip)?(userProfile.zip):'--'}}</span></li>
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="inner-grid-system">
+                <div class="first-row">
+                    <ul class="first-col">
+                        <li><span class="left-col">NCPDP Number :</span> <span
+                                class="right-col">{{(userProfile?.NCPDPNo)?(userProfile.NCPDPNo):'--'}}</span></li>
+                        <li><span class="left-col">NPI Number :</span> <span
+                                class="right-col">{{(userProfile?.NPINo)?(userProfile.NPINo):'--'}}</span></li>
+                        <li><span class="left-col">Pharmacist Name :</span> <span
+                                class="right-col">{{(userProfile?.pharmacistName)?(userProfile.pharmacistName):'--'}}</span></li>
+                        <li><span class="left-col">Pharmacist Email :</span> <span
+                                class="right-col">{{(userProfile?.pharmacistEmail)?(userProfile.pharmacistEmail):'--'}}</span></li>
+                        <li><span class="left-col">Pharmacist NPI Number:</span> <span
+                                class="right-col">{{(userProfile?.pharmacistNpiNumber)?(userProfile.pharmacistNpiNumber):'--'}}</span></li>
+                        <li><span class="left-col">State License Number:</span> <span
+                                class="right-col">{{(userProfile?.stateLicenseNumber)?(userProfile.stateLicenseNumber):'--'}}</span></li>
+                    </ul>
+                </div>
+                <div class="seperate1"></div>
+            </div>
+            <!-- Timings Divs --> <!-- Timings Divs --> <!-- Timings Divs --> <!-- Timings Divs -->
+            <div class="inner-grid-system-1">
+                <div class="small-heading-2">
+                <div class="timing-main">Booking Configuration
+                    <a class="edit-pharma" style="cursor: pointer;" (click)="editTimings()"><img src="../../../assets/images/edit.svg" alt=""></a>
+                    <a class="edit-dose" style="cursor: pointer;" ><img src="../../../assets/images/edit.svg" alt=""></a>
+                </div>
+                <div class="max-main">Max dose/Slot: <b style="cursor: pointer;color:#14649C ">{{userProfile.timings?.Wednesday.maxDose}}</b>
+                </div>
+                </div>
+
+
+                <div class="hour">Hours :</div> 
+                <div class="main-div-week">
+    
+
+                <div class="first-col-week">
+                    <div class="title-bold">Days</div>
+                    <div class="monday-main-bold">Monday</div>
+                    <div class="tueseday-main">Tueseday</div>
+                    <div class="wedenesday-main">Wedenesday</div>
+                    <div class="thursday-main">Thursday</div>
+                    <div class="friday-main">Friday</div>
+                    <div class="saturday-main">Saturday</div>
+                    <div class="sunday-main">Sunday</div>
+                </div>
+
+                <div class="second-col-week">
+                <div class="title-bold" style="padding-left: 27px;">Timing</div>
+                 <div class="second-inner-main">
+                    <div class="open-main-bold">{{userProfile?.timings?.Monday.open|timings}}</div>-<div class="open-main-bold">{{userProfile?.timings?.Monday.close|timings}}</div>
+                 </div>
+                <div class="second-inner-main">
+                    <div class="open-main">{{userProfile?.timings?.Tuesday.open|timings }}</div>-<div class="open-main">{{userProfile?.timings?.Tuesday.close|timings}}</div>
+                </div>
+
+                <div class="second-inner-main">
+                    <div class="open-main">{{userProfile?.timings?.Wednesday.open|timings}}</div>-<div class="open-main">{{userProfile?.timings?.Wednesday.close|timings}}</div>
+                </div>
+                    <div class="second-inner-main">
+                    <div class="open-main">{{userProfile?.timings?.Thursday.open|timings}}</div>-<div class="open-main">{{userProfile?.timings?.Thursday.close|timings}}</div>
+                </div>
+
+                <div class="second-inner-main">
+                    <div class="open-main">{{userProfile?.timings?.Friday.open|timings}}</div>-<div class="open-main">{{userProfile?.timings?.Friday.close|timings}}</div>
+                </div>
+                    <div class="second-inner-main">
+                    <div class="open-main">{{userProfile?.timings?.Saturday.open|timings}}</div>-<div class="open-main">{{userProfile?.timings?.Saturday.close|timings}}</div>
+                </div>
+
+                    
+                <div class="second-inner-main">
+                    <div class="open-main">{{userProfile?.timings?.Sunday.open|timings}}</div>-<div class="open-main">{{userProfile?.timings?.Sunday.close|timings}}</div>
+                </div>
+                </div>
+
+                <div class="third-col-week">
+                <div class="title-bold">Dose Count</div>
+                <div class="second-inner-main">
+                    <div class="dose-main-bold">{{userProfile?.timings?.Monday.maxDose}}</div>
+                    <div class="dose-day-bold">Dose/day</div>
+                </div>
+
+                <div class="second-inner-main">
+                    <div class="dose-main">{{userProfile?.timings?.Tuesday.maxDose}}</div>
+                    <div class="dose-day">Dose/day</div>
+                </div>
+
+                <div class="second-inner-main">
+                    <div class="dose-main">{{userProfile?.timings?.Wednesday.maxDose}}</div>
+                    <div class="dose-day">Dose/day</div>
+                </div>
+  
+                <div class="second-inner-main">
+                    <div class="dose-main">{{userProfile?.timings?.Thursday.maxDose}}</div>
+                    <div class="dose-day">Dose/day</div>
+                </div>
+
+                <div class="second-inner-main">
+                    <div class="dose-main">{{userProfile?.timings?.Friday.maxDose}}</div>
+                    <div class="dose-day">Dose/day</div>
+                </div>
+
+                <div class="second-inner-main">
+                    <div class="dose-main">{{userProfile?.timings?.Saturday.maxDose}}</div>
+                    <div class="dose-day">Dose/day</div>
+                </div>
+                
+                <div class="second-inner-main">
+                    <div class="dose-main">{{userProfile?.timings?.Sunday.maxDose}}</div>
+                    <div class="dose-day">Dose/day</div>
+                </div>
+                </div>
+                </div>
+            </div>
+            <!-- -------No-of-vaccinators----------- -->
+            <div class="inner-grid-system">
+                <div class="main-inner-grid-wrapper">
+                    <div class="row-for-vaccinators">
+                        <div class="labal-for-vaccionators-main">
+                            No of vaccinators
+                        </div>
+                        <div class="input-dose-main">
+                            <input type="text" class="noOfVaccinator" readonly [(ngModel)]="userProfile.noOfVaccinator">
+                        </div>
+                        
+                    </div>
+                    <div class="row-for-vaccinators">
+                        <div class="labal-for-vaccionators-main">
+                            Max. dose/Slot
+                        </div>
+                        <div class="input-dose-main">
+                            <input 
+                            maxlength="2"
+                            class="editDosePerSlot"
+                            value="0"
+                            (keyup.enter)="save()"
+                            [ngStyle]="{'background-color': editDosePerSlot ? 'white': '#F2F2F2'}"
+                            [readonly]="!editDosePerSlot" 
+                            type="text" OnlyNumeric 
+                            [(ngModel)]="userProfile.dosePerSlot">
+                        </div>
+                        <div *ngIf="!editDosePerSlot" (click)="editDosePerSlotFunc()" class="edit-btn">
+                            <img class="edit" src="../../../assets/images/edit.svg" alt="edit" title="edit">
+                        </div>
+                        <div *ngIf="editDosePerSlot" (click)="save()" class="edit-btn">
+                            <img  class="tick" src ="../../../assets/images/tick.svg">
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
+            
+        </div>
+    </ng-container>
+
+</div>

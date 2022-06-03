@@ -1,0 +1,348 @@
+// ----Media query mixin-----------//
+@mixin min-mq($min-screen-size) {
+    @media (min-width: $min-screen-size +"px") {
+    @content;
+    }
+    }
+    @mixin max-mq($max-screen-size) {
+    @media (max-width: $max-screen-size +"px") {
+    @content;
+    }
+    }
+    // ----------------------------For Orientation-----------------------//
+    @mixin landscape-orientation($max-screen-size,
+    $orientation) {
+    @media (max-width: $max-screen-size +"px") and (orientation: $orientation) {
+    @content;
+    }
+    }
+    @mixin btw-mq($min-screen-size,
+    $max-screen-size,
+    $pixel-ratio,
+    $orientation) {
+    @media only screen and (min-width: $min-screen-size +"px") and (max-width: $max-screen-size +"px") and (-webkit-min-device-pixel-ratio: $pixel-ratio) and (orientation: $orientation) {
+    @content;
+    }
+    }    
+  // ------------END of Media Screen Mixing--------------// 
+.main-setting-wrapper {
+    padding: 25px 50px 74px 41px;
+    position: relative;
+}
+.setting-text {
+    color: #14649C;
+    font-weight: 500;
+    font-size: 18px;
+}
+.label-pharma {
+    text-decoration-line: underline;
+    color: #333333;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 19px;
+}
+.seperate {
+    border: 1px solid #E5E5E5;
+    display: none;
+}
+
+input.editDosePerSlot.ng-untouched.ng-pristine.ng-valid {
+    background: #F2F2F2;
+    border: 1px solid #CFD0D1;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 6px;
+}
+a.edit-pharma {
+    position: absolute;
+    right: 58%;
+    z-index: 999;
+}
+.pharma-row {
+    padding: 16px 0px;
+}
+.main-inner-pharma {
+    display: flex;
+}
+ .faq-grid-system{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 50px;
+    margin-top: 4px;
+    grid-row-gap: 40px;
+    @include max-mq(1200){
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 0px;
+    }
+}
+.first-row {
+    display: flex;
+}
+.first-col {
+    display: flex;
+    flex-direction: column;
+    width: 584px;
+    @include max-mq(1300){
+        width: 500px;
+    }
+}
+img.tick {
+    width: 19px;
+}   
+.second-col {
+    display: flex;
+    flex-direction: column;
+}
+.inner-grid-system-1 {
+    width: 100%;
+}
+.small-heading-2{
+    display: flex;
+    justify-content: space-between;
+        font-weight: 1000;
+    font-size: 16px;
+    line-height: 45px;
+/* identical to box height, or 156% */
+text-decoration-line: underline;
+}
+.max-main {
+    position: relative;
+    left: 186px;
+    display: none;
+
+}
+span.left-col {
+    display: block;
+    width: 34%;
+    padding: 5px 0px;
+    font-weight: 500;
+}
+
+li {
+    display: flex;
+}
+span.right-col-second {
+    font-size: 15px;
+    line-height: 25px;
+    color: #14649C;
+    margin-left: 47px;
+}
+span.left-col-second1 {
+    margin-right: 79px;
+    // font-weight: 600;
+}
+span.left-col-second {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 25px;
+}
+span.close-time {
+    font-weight: 500;
+}
+span.hours.class {
+    display: inline-block;
+ width: 60px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 25px;
+}
+span.left-col-third {
+    display: inline-block;
+    width: 139px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 25px;
+}
+.seperate1{
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    width: 95%;
+    border: 1px solid #E5E5E5;
+    margin: auto;
+    left: 0;
+    display: none;
+    @include max-mq(1200){
+        top: 60.5%;
+    }
+}
+span.right-col-second1 {
+    font-size: 15px;
+    line-height: 25px;
+    color: #14649C;
+    margin-left: 42px;
+}
+span.right-col {
+    color: #333333;
+    display: block;
+    margin-top: 5px;
+    width: 321px;
+}
+span.left-col-second11 {
+    // font-weight: 600;
+}
+span.close-time11 {
+    // font-weight: 600;
+}
+span.right-col-second11 {
+    font-size: 15px;
+    line-height: 25px;
+    color: #14649C;
+    margin-left: 48px;
+}
+.main-div-week {
+    display: flex;
+    margin-left: 0px;
+}
+.first-div-inner {
+    display: flex;
+    width: 21px;
+}
+.second-inner-main {
+    display: flex;
+}
+.first-col-week {
+    width: 25%;
+    line-height: 2;
+}
+.second-col-week {  
+    width: 25%;
+    line-height: 2;
+}
+.dose-main{
+    color: #14649C;
+    width: 40px;
+}
+.dose-day {
+    // color: #14649C;
+    color: #000;
+}
+.open-main {
+    width: 38px;
+    margin-right: 5px;
+    margin-left: 5px;
+    @include max-mq(1500){
+        width: 46px;
+    }
+
+    @include max-mq(1700){
+        width: 44px;
+    }
+  
+}
+.hour {
+    position: relative;
+    top: 24px;
+    // font-weight: 600;
+    display: none;
+}
+// .monday-main-bold {
+//     font-weight: 600;
+// }
+.open-main-bold {
+    // font-weight: 600;
+    margin-right: 5px;
+    margin-left: 5px;
+    @include max-mq(1700){
+        width: 45px;
+    }
+    @include max-mq(1200){
+        width: 43px;
+    }
+}
+.dose-main-bold {
+    // font-weight: 600;
+    width: 40px;
+    color: #14649C;
+}
+// .dose-day-bold{
+//     font-weight: 600;
+// }
+.third-col-week {
+    line-height: 2;
+}
+.timing-main {
+    @include max-mq(1200){
+        padding-top: 30px;
+    }
+}
+
+
+.border-top-info {
+    border-top: 1px solid #dedede;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.title-bold {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 11px;
+    margin-top: 10px;
+}
+
+a.edit-dose {
+    position: absolute;
+    right: 20px;
+    display: none;
+}
+
+.headding-row-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    button.change-password-main{
+        background: #fff;
+        border-radius: 7px;
+        padding: 7px 15px;
+        border: 1px solid #14649C;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #14649C;
+        transition: 0.4s all ease;
+        &:hover{
+            background: #14649c;
+            color: #fff;
+            transition: 0.4s all ease;
+        }
+    }
+}
+
+.main-inner-grid-wrapper {
+    margin-top: 80px;
+    .row-for-vaccinators {
+        width: 70%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        .labal-for-vaccionators-main {
+            width: 50%;
+            font-size: 15px;
+            line-height: 18px;
+            letter-spacing: 0.01em;
+            color: #333333;
+            margin-right: 0px;
+            font-weight: 500;
+        }
+        .input-dose-main {
+            margin-right: 20px;
+            width: 40%;
+            input{
+                background: #F2F2F2;
+                border: 1px solid #CFD0D1;
+                box-sizing: border-box;
+                border-radius: 5px;
+                padding: 10px 20px;
+            }
+        }
+        .edit-btn{
+            cursor: pointer;
+        }
+    }
+}
+
+// ~

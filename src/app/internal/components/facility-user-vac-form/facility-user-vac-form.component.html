@@ -1,0 +1,1190 @@
+<div class="heading-row-main">
+    <!-- <div class="left-heading-col">Form Preview</div>
+    <div class="required-fields"><span class="dic">Note:</span> <span class="red-color-filed">Scroll to bottom for verify details </span></div> -->
+    <div class="main">
+        <div class="span">Form Preview</div>
+        <div class="span1" style="color: red;"><b style="color: #333333;">Note:</b>Scroll to bottom for verify details</div>
+    </div>
+    <div class="right-col-main">
+
+            <!-- <div class="remind-div mr-2">
+                <img class="mr-2" src="../../../../../assets/images/remind.svg" alt="remind" title="remind">
+                <span style="cursor: pointer;" (click)="reminder()">Reminder</span>
+            </div> -->
+            <!-- <div class="dose-history">
+                <img class="mr-2" src="../../../../../assets/images/history.svg" alt="history" title="history"/>
+                <span style="cursor: pointer;" (click)="doseHistory()">Dose History</span>
+            </div> -->
+
+    </div>
+</div>
+
+<!-- ------------------start-form-here-------------------------- -->
+<!-- <ng-container [ngSwitch]="formStep"> -->
+<ng-container >
+    <form [formGroup]="covidConsentForm">
+        <!-- <ng-container *ngSwitchCase="'FIRST'"> -->
+            <div class="main-form-wrapper">
+            <div class="first-row-heading">
+                <div class="under-line-blue">COVID Vaccine Intake Consent Form </div>
+                <img  class="arrow-main" style="cursor: pointer;" src="../../../../assets/images/scroll-arrow.svg" (click)="onScroll()"/>
+
+                <!-- <button class="btn" routerLinkActive="active" (click)="addDose()">
+                    + Add {{ fromWhere == AppRoutes.NEW_REQ ? '1st' :
+                             fromWhere == AppRoutes.DOSE_ONE ? '2nd' :
+                             fromWhere == AppRoutes.DOSE_TWO ? 'other' : 'other'
+                              }} dose</button> -->
+
+            </div>
+            <div class="small-heading-main">Patient Information</div>
+
+            <!-- ------------input=grid-main==================== -->
+            <div class="grid-for-input-main">
+                <div class="inner-grid-main">
+                    <label class="form-label">First Name <span class="red-color">*</span></label>
+                    <input 
+                    maxlength="50"
+                    [ngClass]="{
+                        'is-invalid': (f.firstname.errors && (f.firstname.touched || submitted))
+                    }"
+                    formControlName="firstname"  type="text" />
+                </div>
+                <div class="inner-grid-main">
+                        <label class="form-label">Last Name <span class="red-color">*</span></label>
+                        <input formControlName="lastname"  type="text" 
+                        maxlength="50"
+                        [ngClass]="{
+                            'is-invalid': (f.lastname.errors && (f.lastname.touched || submitted))
+                        }"
+                        />
+                        <div class="show-error" *ngIf="submitted && f.lastname.errors">
+                            <small *ngIf="f.lastname.errors.required"> lastname is required</small>
+                            <small *ngIf="f.lastname.errors.maxlength"> lastname should be less than {{f.lastname.errors.maxlength.requiredLength}}</small>
+                        </div>
+                </div>
+                <div class="inner-grid-main date-picker-main">
+                    <label class="form-label">Date of Birth <span class="red-color">*</span></label>
+                    <input 
+                    [ngClass]="{
+                        'is-invalid': (f.dob.errors && (f.dob.touched || submitted))
+                    }"
+                    formControlName="dob" type="text" class="form-control"  
+                    #dob11
+                    readonly
+                    
+                    />
+                    <!-- (bsValueChange)="onDateChange(dob11, 'dob')" 
+                    bsDatepicker 
+                    [maxDate]="today" -->
+                    <!-- [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" -->
+                    <div class="show-error" *ngIf="submitted && f.dob.errors">
+                        <small *ngIf="f.dob.errors.required"> dob is required</small>
+                    </div>
+                </div>
+                <div class="inner-grid-main-gender">
+                    <label class="form-label-gender">Gender <span class="red-color">*</span></label>
+                    <div class="horizantal-radio-buttons">
+                        <div class="inner-grid-system">
+                            <input 
+                            [ngClass]="{'is-invalid-radio': (f.gender.errors && submitted)}"
+                            type="radio" id="male" formControlName="gender" value="male">
+                            <label for="male">Male</label>
+                        </div>
+                        <div class="inner-grid-system">
+                            <input
+                            type="radio" id="female" formControlName="gender" value="female">
+                            <label for="female">Female</label>
+                        </div>
+                        <div class="inner-grid-system">
+                            <input type="radio" id="other" formControlName="gender" value="other">
+                            <label for="other">Other</label>
+                        </div>  
+                    </div>
+                    <div class="show-error" *ngIf="submitted && f.gender.errors">
+                        <small *ngIf="f.gender.errors.required"> gender is required</small>
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">Address <span class="red-color">*</span></label>
+                    <input [ngClass]="{'is-invalid' : (f.address.errors && (f.address.touched || submitted))}" 
+                    ngx-google-places-autocomplete
+                    placeholder=""
+                    (onAddressChange)="handleAddressChange($event, 'address')"
+                    formControlName="address" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.address.errors">
+                        <small *ngIf="f.address.errors.required"> address is required</small>
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">City <span class="red-color">*</span></label>
+                    <input [ngClass]="{'is-invalid' : (f.city.errors && (f.city.touched || submitted))}" formControlName="city" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.city.errors">
+                        <small *ngIf="f.city.errors.required"> city is required</small>
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">State <span class="red-color">*</span></label>
+                    <input [ngClass]="{'is-invalid' : (f.state.errors && (f.state.touched || submitted))}" formControlName="state" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.state.errors">
+                        <small *ngIf="f.state.errors.required"> state is required</small>
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">Zip <span class="red-color">*</span></label>
+                    <input 
+                    maxlength="10"
+                    [ngClass]="{'is-invalid' : (f.zip.errors && (f.zip.touched || submitted))}"  OnlyNumeric formControlName="zip" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.zip.errors">
+                        <small *ngIf="f.zip.errors.required"> zip is required</small>
+                        <small *ngIf="f.zip.errors.maxlength"> zip should be less than {{f.zip.errors.maxlength.requiredLength}}</small>
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">Primary Care Provider 
+                        (PCP) Name</label>
+                    <input maxlength="50" [ngClass]="{'is-invalid' : (f.PCPname.errors && (f.PCPname.touched || submitted))}" formControlName="PCPname" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.PCPname.errors">
+                        <small *ngIf="f.PCPname.errors.required"> PCPname is required</small>
+                        <small *ngIf="f.PCPname.errors.maxlength"> PCPname should be less than {{f.PCPname.errors.maxlength.requiredLength}}</small>
+                        
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">PCP Phone 
+                        Number</label>
+                    <input OnlyNumeric maxlength="10" [ngClass]="{'is-invalid' : (f.PCPmobile.errors && (f.PCPmobile.touched || submitted))}" OnlyNumeric formControlName="PCPmobile" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.PCPmobile.errors">
+                        <small *ngIf="f.PCPmobile.errors.required"> PCPmobile is required</small>
+                        <small *ngIf="f.PCPmobile.errors.maxlength"> PCPmobile should be less than {{f.PCPmobile.errors.maxlength.requiredLength}}</small>
+
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">PCP Fax Number</label>
+                    <input [ngClass]="{'is-invalid' : (f.PCPfaxnumber.errors && (f.PCPfaxnumber.touched || submitted))}"
+                    maxlength="15"
+                    OnlyNumeric formControlName="PCPfaxnumber" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.PCPfaxnumber.errors">
+                        <small *ngIf="f.PCPfaxnumber.errors.required"> PCPfaxnumber is required</small>
+                        <small *ngIf="f.PCPfaxnumber.errors.maxlength"> PCPfaxnumber should be less than {{f.PCPfaxnumber.errors.maxlength.requiredLength}}</small>
+
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">PCP Address</label>
+                    <input placeholder=""
+                    [ngClass]="{'is-invalid' : (f.PCPaddress.errors && (f.PCPaddress.touched || submitted))}"
+                    ngx-google-places-autocomplete
+                    (onAddressChange)="handleAddressChange($event, 'PCPaddress')"
+                    formControlName="PCPaddress" type="text" />
+                    
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">PCP City</label>
+                    <input 
+                    [ngClass]="{'is-invalid' : (f.PCPcity.errors && (f.PCPcity.touched || submitted))}"
+                    formControlName="PCPcity" type="text" />
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">PCP State</label>
+                    <input
+                    [ngClass]="{'is-invalid' : (f.PCPstate.errors && (f.PCPstate.touched || submitted))}"
+                    formControlName="PCPstate" type="text" />
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">PCP Zip</label>
+                    <input 
+                    maxlength="10"
+                    [ngClass]="{'is-invalid' : (f.PCPzip.errors && (f.PCPzip.touched || submitted))}"
+                    OnlyNumeric formControlName="PCPzip" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.PCPzip.errors">
+                        <small *ngIf="f.PCPzip.errors.required"> PCPzip is required</small>
+                        <small *ngIf="f.PCPzip.errors.maxlength"> PCPzip should be less than {{f.PCPzip.errors.maxlength.requiredLength}}</small>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="after-form-text">Vaccine Administration Information (for Immunizer/Pharmacist use only)</div>
+            <div class="red-text">To be filled out by immunizer, as required for state immunization registry reporting. </div>
+            <div class="under-line-title-black">Race : <span class="red-color">*</span></div>
+            <div class="radio-btn-group-main">
+                <div class="inner-grid-system">
+                    <input [ngClass]="{'is-invalid-radio' : (f.race.errors && submitted)}" type="radio" id="usa" formControlName="race" value="usa">
+                    <label for="usa">American Indian or Alaska Native</label>
+                </div>
+                <div class="inner-grid-system">
+                    <input  type="radio" id="asian" formControlName="race" value="asian">
+                    <label for="asian">Asian</label>
+                </div>
+                <div class="inner-grid-system">
+                    <input  type="radio" id="islander" formControlName="race" value="islander">
+                    <label for="islander">Native Hawaiian/Other Pacific Islander</label>
+                </div>  
+                <div class="inner-grid-system">
+                    <input  type="radio" id="black" formControlName="race" value="black">
+                    <label for="black">Black or African American</label>
+                </div>
+                <div class="inner-grid-system">
+                    <input  type="radio" id="white" formControlName="race" value="white">
+                    <label for="white"> White</label>
+                </div>
+                <div class="inner-grid-system">
+                    <input  type="radio" id="white12" formControlName="race" value="disclosed">
+                    <label for="white12">Prefer not to disclose</label>
+                </div>
+                <div class="inner-grid-system">
+                    <input  type="radio" id="other13" formControlName="race" value="other">
+                    <label for="other13">Other Race</label>
+                </div>
+            </div>
+            <div class="under-line-title-black">Ethnicity: <span class="red-color">*</span></div>
+            <div class="radio-btn-group-main">
+                <div class="inner-grid-system">
+                    <input [ngClass]="{'is-invalid-radio' : (f.ethnicity.errors && submitted)}" type="radio" id="hispanic" formControlName="ethnicity" value="hispanic">
+                    <label for="hispanic"> Hispanic</label>
+                </div>
+                <div class="inner-grid-system">
+                    <input type="radio" id="nothispanic" formControlName="ethnicity" value="nothispanic">
+                    <label for="nothispanic"> Not Hispanic or Latino</label>
+                </div>
+                <div class="inner-grid-system">
+                    <input type="radio" id="unknown" formControlName="ethnicity" value="unknown">
+                    <label for="unknown">Unknown</label>
+                </div>  
+            </div>
+            <div class="under-line-title-black">Emergency Contact Details</div>
+             
+    
+            <div class="main-grid-system-forms border-none" formGroupName="nextOfKin">
+                <div class="inner-grid-main">
+                        <label class="form-label">Name <span class="red-color">*</span></label>
+                        <input 
+                        maxlength="50"
+                        [ngClass]="{'is-invalid' : (f.nextOfKin.get('name').errors && (f.nextOfKin.get('name').touched || submitted) )}"
+                        formControlName="name" type="text" />
+                        <!-- <div class="show-error" *ngIf="submitted && f.nextOfKin.get('name').errors">
+                            <small *ngIf="f.nextOfKin.get('name').errors.required"> name is required</small>
+                            <small *ngIf="f.nextOfKin.get('name').errors.maxlength"> name should be less than {{f.nextOfKin.get('name').errors.maxlength.requiredLength}}</small>
+                        </div> -->
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">Phone Number <span class="red-color">*</span></label>
+                    <input
+                    minlength="10"
+                    maxlength="10"
+                    OnlyNumeric
+                    [ngClass]="{'is-invalid' : (f.nextOfKin.get('mobile').errors && (f.nextOfKin.get('mobile').touched || submitted) )}"
+                    formControlName="mobile" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.nextOfKin.get('mobile').errors">
+                        <small *ngIf="f.nextOfKin.get('mobile').errors.required"> mobile is required</small>
+                        <small *ngIf="f.nextOfKin.get('mobile').errors.maxlength"> mobile should be less than {{f.nextOfKin.get('name').errors.maxlength.requiredLength}}</small>
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">Relationship <span class="red-color">*</span></label>
+                    <input 
+                    maxlength="50"
+                    [ngClass]="{'is-invalid' : (f.nextOfKin.get('relationship').errors && (f.nextOfKin.get('relationship').touched || submitted) )}"
+                    formControlName="relationship" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.nextOfKin.get('relationship').errors">
+                        <small *ngIf="f.nextOfKin.get('relationship').errors.required"> relationship is required</small>
+                        <small *ngIf="f.nextOfKin.get('relationship').errors.maxlength"> relationship should be less than {{f.nextOfKin.get('relationship').errors.maxlength.requiredLength}}</small>
+                    </div>
+                </div>
+                <div class="inner-grid-main">
+                    <label class="form-label">Address <span class="red-color">*</span></label>
+                    <input 
+                    [ngClass]="{'is-invalid' : (f.nextOfKin.get('address').errors && ( f.nextOfKin.get('address').touched || submitted))}"
+                    ngx-google-places-autocomplete
+                    placeholder=""
+                    (onAddressChange)="handleAddressChange($event, 'nextOfKin.address')"
+                    formControlName="address" type="text" />
+                    <div class="show-error" *ngIf="submitted && f.nextOfKin.get('address').errors">
+                        <small *ngIf="f.nextOfKin.get('address').errors.required"> address is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="short-text-in">For CA, For CA, this indicator means the registry will not share with Universities, Schools or other agencies</div>
+            <div class="under-line-title-black">Registry Sharing Indicator: <span class="red-color">*</span> </div>
+            <div class="radio-btn-group-main yes-no-radio">
+                <div class="inner-grid-system">
+                    <input 
+                    [ngClass]="{'is-invalid-radio' : (f.registrySharingIndicator.errors && submitted )}"
+                    type="radio" id="yes" formControlName="registrySharingIndicator" value="Yes">
+                    <label for="yes">Yes</label>
+                </div>
+                <div class="inner-grid-system">
+                    <input type="radio" id="no" formControlName="registrySharingIndicator" value="No">
+                    <label for="no">No</label>
+                </div>
+                <!-- <div class="show-error" *ngIf="submitted && f.registrySharingIndicator.errors">
+                    <small *ngIf="f.registrySharingIndicator.errors.required"> registrySharingIndicator is required</small>
+                </div> -->
+            </div>
+           
+                <div class="margin-bottom-20"><b>Insurance Information</b> (for onsite clinics, please ensure a copy of the patient’s insurance card(s) was collected)</div>
+                <!-- --------------------img-listing------------------------- -->
+                <div class="insu-card">Insurance Card Front</div>
+                <div class="img-name-row-main">
+                        <div class="left-col-img">
+                                <img src="../../../../../assets/images/jpg-img.svg" alt="jpg" title="jpg">
+                                <div class="file-info-maimn">
+                                    <a class="text-bold" [href]="(f.insCardFront.value?.name ? f.insCardFront.value?.name : f.insCardFront.value) ? (f.insCardFront.value?.name ? f.insCardFront.value?.name : f.insCardFront.value) : ''">
+                                        {{(f.insCardFront.value?.name ? f.insCardFront.value?.name : f.insCardFront.value) ? (f.insCardFront.value?.name ? f.insCardFront.value?.name : f.insCardFront.value) : 'No Document Attached.' }}
+                                    </a>
+                                    <!-- <a class="text-bold">{{(f.insCardFront.value?.name ? f.insCardFront.value?.name : f.insCardFront.value) ? (f.insCardFront.value?.name ? f.insCardFront.value?.name : f.insCardFront.value) : 'No Document Attached.'}}</a> -->
+                                    <!-- <span class="short-des-img">13 Jan, 2021 at 11:05 - 1.4 Mb / 4.8 Mb</span> -->
+                                </div> 
+                        </div>
+                        <div class="right-img">
+                       
+                            <div class="download-icon">
+                                <img (click)="downloadImage('insCardFront')" src="../../../../../assets/images/download-img.svg " alt="logo" title="logo">
+                                
+                            </div>
+                            <!-- <div class="delete-icon">
+                                <img (click)="deleteImage('insCardFront')" src="../../../../../assets/images/delete.svg " alt="logo" title="logo">
+                            </div> -->
+
+                        </div>
+
+                </div>
+                <div class="insu-card">Insurance Card Back</div>
+                <div class="img-name-row-main">
+                        <div class="left-col-img">
+                                <img src="../../../../../assets/images/jpg-img.svg" alt="jpg" title="jpg">
+                                <div class="file-info-maimn">
+                                    <a class="text-bold" [href]="(f.insCardBack.value?.name ? f.insCardBack.value?.name : f.insCardBack.value) ? (f.insCardBack.value?.name ? f.insCardBack.value?.name : f.insCardBack.value) : ''">
+                                        {{(f.insCardBack.value?.name ? f.insCardBack.value?.name : f.insCardBack.value) ? (f.insCardBack.value?.name ? f.insCardBack.value?.name : f.insCardBack.value) : 'No Document Attached.' }}
+                                    </a>
+                                    <!-- <span class="short-des-img">13 Jan, 2021 at 11:05 - 1.4 Mb / 4.8 Mb</span> -->
+                                </div> 
+                        </div>
+                        <div class="right-img">
+                        
+                            <div class="download-icon">
+                                <img (click)="downloadImage('insCardBack')" src="../../../../../assets/images/download-img.svg " alt="logo" title="logo">
+                            </div>
+                            <!-- <div class="delete-icon">
+                                <img (click)="deleteImage('insCardBack')" src="../../../../../assets/images/delete.svg " alt="logo" title="logo">
+                            </div> -->
+
+                        </div>
+
+                </div>
+                <div class="insu-card">Goverment Issued Personal ID</div>
+                <div class="img-name-row-main">
+                        <div class="left-col-img">
+                                <img src="../../../../../assets/images/jpg-img.svg" alt="jpg" title="jpg">
+                                <div class="file-info-maimn">
+                                    <a class="text-bold" [href]="(f.govIssuedId.value?.name ? f.govIssuedId.value?.name : f.govIssuedId.value) ? (f.govIssuedId.value?.name ? f.govIssuedId.value?.name : f.govIssuedId.value) : ''">
+                                        {{(f.govIssuedId.value?.name ? f.govIssuedId.value?.name : f.govIssuedId.value) ? (f.govIssuedId.value?.name ? f.govIssuedId.value?.name : f.govIssuedId.value) : 'No Document Attached.' }}
+                                    </a>
+                                    <!-- <span class="short-des-img">13 Jan, 2021 at 11:05 - 1.4 Mb / 4.8 Mb</span> -->
+                                </div>
+                        </div>
+                        <div class="right-img">
+                         
+                            <div class="download-icon">
+                                <img (click)="downloadImage('govIssuedId')" src="../../../../../assets/images/download-img.svg " alt="logo" title="logo">
+                            </div>
+                            <!-- <div class="delete-icon">
+                                <img (click)="deleteImage('govIssuedId')" src="../../../../../assets/images/delete.svg " alt="logo" title="logo">
+                            </div> -->
+
+                        </div>
+
+                </div>
+                <!-- <div class="text-right last-col">
+                    <button class="btn btn-primary next-btn" (click)="goToPage('SECOND')">Next</button>
+                </div> -->
+
+            </div>
+        <!-- </ng-container> -->
+
+
+
+
+
+
+        <!-- <ng-container *ngSwitchCase="'SECOND'"> -->
+            <div class="main-form-wrapper">
+            <!-- <div class="first-row-heading">
+                <div class="under-line-blue">COVID Vaccine Intake Consent Form </div>
+                <button class="btn">+ Add other dose</button>
+            </div> -->
+        
+                <!-- ----------indicates------------------ -->
+                <div class="required-filed"><span>*</span>Indicates Required Fileds</div>
+                <div class="under-line-title-black">Prescription Insurance</div>
+                    <!-- ----------------Are you primary card holder------------------- -->
+
+                    <div class="select-insurance-type second-dob-main">
+                        <div class="class-req-red"> <span>*</span> Select insurance type : </div>
+                        <div class="radio-btn-group-main">
+                            <div class="inner-grid-system">
+                                <input type="radio" 
+                                [ngClass]="{'is-invalid-radio' : (f.insType.errors && submitted )}"
+                                (change)="onInsTypeSelected()" id="privateinsurance"   formControlName="insType" value="prescriptioninsurance">
+                                <label for="privateinsurance">Prescription Insurance</label>
+                            </div>  
+                            <div class="inner-grid-system">
+                                <input type="radio" (change)="onInsTypeSelected()" id="medicare" formControlName="insType" value="medicare">
+                                <label for="medicare">Medicare</label>
+                            </div>
+                            <div class="inner-grid-system">
+                                <input type="radio" (change)="onInsTypeSelected()" id="medical" formControlName="insType" value="medical">
+                                <label for="medical">Medi-cal</label>
+                            </div>
+                            <div class="inner-grid-system">
+                                <input type="radio" (change)="onInsTypeSelected()" id="uninsured" formControlName="insType" value="uninsured">
+                                <label for="uninsured">Uninsured</label>
+                            </div>    
+                        </div>
+                    </div>
+
+                    <ng-container [ngSwitch]="covidConsentForm.get('insType').value">
+            
+                        <ng-container *ngSwitchCase="'prescriptioninsurance'">
+                            <ng-container formGroupName="prescriptionInsurance">
+                                <div class="under-line-title-black">Prescription Insurance</div>
+                                <div class="are-primary-card-hold">
+                                    <div class="req-red-card"><span>*</span> Are you the primary cardholder?</div>
+                                    <div class="right-grid-col">
+                                        <div class="inner-grid-system">
+                                            <input 
+                                            [ngClass]="{'is-invalid-radio' : (f.prescriptionInsurance.get('isPrimaryCardholder').errors && submitted )}"
+                                            type="radio" id="yes1" (change)="covidConsentForm.get('prescriptionInsurance.dob').reset('')" 
+                                            formControlName="isPrimaryCardholder" value="Yes">
+                                            <label for="yes1">Yes</label>
+                                        </div>
+                                        <div class="inner-grid-system">
+                                            <input type="radio" id="no1" formControlName="isPrimaryCardholder" value="No">
+                                            <label for="no1">No</label>
+                                        </div>
+                                        <!-- <div class="show-error" *ngIf="submitted && f.prescriptionInsurance.get('isPrimaryCardholder').errors">
+                                            <small *ngIf="f.prescriptionInsurance.get('isPrimaryCardholder').errors.required"> isPrimaryCardholder is required</small>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <ng-container *ngIf="covidConsentForm.get('prescriptionInsurance.isPrimaryCardholder').value == 'No'">
+                                    <div  class="second-dob-main">
+                                        <div class="class-req-red"> <span>*</span> If no, include the primary cardholder’s DOB </div>
+                                        <div class="inner-grid-main date-picker-main">
+                                            <input type="text" class="form-control"
+                                            formControlName="dob"
+                                            [ngClass]="{'is-invalid' : (f.prescriptionInsurance.get('dob').errors && (f.prescriptionInsurance.get('dob').touched||submitted) )}"
+                                            #dob1
+                                            />
+                                            <!-- [maxDate]="today"
+                                            
+                                            (bsValueChange)="onDateChange(dob1, 'prescriptionInsurance.dob')"
+                                            readonly
+                                            bsDatepicker -->
+                                            <!-- [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" -->
+                                         
+                                        </div>
+                                        <!-- <div class="show-error" *ngIf="submitted && f.prescriptionInsurance.get('dob').errors">
+                                            <small *ngIf="f.prescriptionInsurance.get('dob').errors.required"> dob is required</small>
+                                        </div> -->
+                                    </div>
+                                </ng-container>
+                              
+                                <div class="main-grid-system-forms card-holder-main">
+                                    <div class="inner-grid-main">
+                                            <label class="form-label"><span class="red-color">*</span>Cardholder ID#</label>
+                                            <input 
+                                            maxlength="50"
+                                            [ngClass]="{'is-invalid' : (f.prescriptionInsurance.get('cardHolderId').errors && (f.prescriptionInsurance.get('cardHolderId').touched || submitted) )}"
+                                            formControlName="cardHolderId" type="text" />
+                                            <!-- <div class="show-error" *ngIf="submitted && f.prescriptionInsurance.get('cardHolderId').errors">
+                                                <small *ngIf="f.prescriptionInsurance.get('cardHolderId').errors.required"> cardHolderId is required</small>
+                                                <small *ngIf="f.prescriptionInsurance.get('cardHolderId').errors.maxlength"> cardHolderId should be less than {{f.prescriptionInsurance.get('cardHolderId').errors.maxlength.requiredLength}}</small>
+                                            </div> -->
+                                    </div>
+                                    <div class="inner-grid-main">
+                                        <label class="form-label"><span class="red-color"></span>RX Group ID</label>
+                                        <input 
+                                        maxlength="50"
+                                        [ngClass]="{'is-invalid' : (f.prescriptionInsurance.get('rxGroupId').errors && (f.prescriptionInsurance.get('rxGroupId').touched || submitted))}"
+                                        formControlName="rxGroupId" type="text" />
+                                        <div class="show-error" *ngIf="submitted && f.prescriptionInsurance.get('rxGroupId').errors">
+                                            <!-- <small *ngIf="f.prescriptionInsurance.get('rxGroupId').errors.required"> rxGroupId is required</small> -->
+                                            <small *ngIf="f.prescriptionInsurance.get('rxGroupId').errors.maxlength"> rxGroupId should be less than {{f.prescriptionInsurance.get('rxGroupId').errors.maxlength.requiredLength}}</small>
+                                        </div>
+                                    </div>
+                                    <div class="inner-grid-main">
+                                        <label class="form-label"><span class="red-color"></span>BIN</label>
+                                        <input 
+                                        maxlength="50"
+                                        [ngClass]="{'is-invalid' : (f.prescriptionInsurance.get('bin').errors && (f.prescriptionInsurance.get('bin').touched || submitted))}"
+                                        formControlName="bin" type="text" />
+                                        <div class="show-error" *ngIf="submitted && f.prescriptionInsurance.get('bin').errors">
+                                            <!-- <small *ngIf="f.prescriptionInsurance.get('bin').errors.required"> bin is required</small> -->
+                                            <small *ngIf="f.prescriptionInsurance.get('bin').errors.maxlength"> bin should be less than {{f.prescriptionInsurance.get('bin').errors.maxlength.requiredLength}}</small>
+                                        </div>
+                                    </div>
+                                    <div class="inner-grid-main">
+                                        <label class="form-label"><span class="red-color"></span>PCN</label>
+                                        <input 
+                                        maxlength="50"
+                                        [ngClass]="{'is-invalid' : (f.prescriptionInsurance.get('pcn').errors && (f.prescriptionInsurance.get('pcn').touched || submitted))}"
+                                        formControlName="pcn" type="text" />
+                                        <div class="show-error" *ngIf="submitted && f.prescriptionInsurance.get('pcn').errors">
+                                            <!-- <small *ngIf="f.prescriptionInsurance.get('pcn').errors.required"> pcn is required</small> -->
+                                            <small *ngIf="f.prescriptionInsurance.get('pcn').errors.maxlength"> pcn should be less than {{f.prescriptionInsurance.get('pcn').errors.maxlength.requiredLength}}</small>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'medicare'">
+                            <ng-container formGroupName="medicareFields">
+                                <div class="medical-fields-main">
+                                    <div class="under-line-title-black">Medicare Fields</div>
+                                    <div class="are-primary-card-hold">
+                                        <div class="req-red-card"><span>*</span> Is the Patient age 65 or older or Medicare Eligible?</div>
+                                        <div class="right-grid-col">
+                                            <div class="inner-grid-system">
+                                                <input 
+                                                [ngClass]="{'is-invalid-radio' : (f.medicareFields.get('patientAgeAbove65').errors && submitted )}"
+                                                formControlName="patientAgeAbove65" type="radio" id="yes2" value="Yes">
+                                                <label for="yes2">Yes</label>
+                                            </div>
+                                            <div class="inner-grid-system">
+                                                <input formControlName="patientAgeAbove65" type="radio" id="no2" value="No">
+                                                <label for="no2">No</label>
+                                            </div>
+                                            <!-- <div class="show-error" *ngIf="submitted && f.medicareFields.get('patientAgeAbove65').errors">
+                                                <small *ngIf="f.medicareFields.get('patientAgeAbove65').errors.required"> patientAgeAbove65 is required</small>
+                                                <small *ngIf="f.medicareFields.get('patientAgeAbove65').errors.maxlength"> patientAgeAbove65 should be less than {{f.medicareFields.get('patientAgeAbove65').errors.maxlength.requiredLength}}</small>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="medicare-text-field">
+                                    <div class="normal-text"><span class="red-color">*</span> the Patient age 65 or older or Medicare Eligible? (<b>Note:</b> MBI is required for all patient age 65 and older, or Medicare eligible. Refer to your Medicare Red, White, and Blue card)</div>
+                                    <input 
+                                    maxlength="12"
+                                    [ngClass]="{'is-invalid' : (f.medicareFields.get('mbi').errors && (f.medicareFields.get('mbi').touched || submitted))}"
+                                    formControlName="mbi" type="text" />
+                                    <!-- <div class="show-error" *ngIf="submitted && f.medicareFields.get('mbi').errors">
+                                        <small *ngIf="f.medicareFields.get('mbi').errors.required"> mbi is required</small>
+                                        <small *ngIf="f.medicareFields.get('mbi').errors.maxlength"> mbi should be less than {{f.medicareFields.get('mbi').errors.maxlength.requiredLength}}</small>
+                                    </div> -->
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container  *ngSwitchCase="'medical'">
+                            <!-- ---------------mediacal-insurance--------------------- -->
+                            <ng-container formGroupName="medicalIns">
+                                <div class="under-line-title-black">Medi-cal / Medicaid number Insurance</div>
+                                <div class="are-primary-card-hold">
+                                    <div class="req-red-card"><span>*</span> Are you the primary cardholder?</div>
+                                    <div class="right-grid-col">
+                                        <div class="inner-grid-system">
+                                            <input 
+                                            [ngClass]="{'is-invalid-radio' : (f.medicalIns.get('isPrimaryCardholder').errors && submitted )}"
+                                            type="radio" id="yes1" formControlName="isPrimaryCardholder" value="Yes">
+                                            <label for="yes1">Yes</label>
+                                        </div>
+                                        <div class="inner-grid-system">
+                                            <input type="radio" id="no1" (change)="covidConsentForm.get('medicalIns.dob').reset('')" formControlName="isPrimaryCardholder" value="No">
+                                            <label for="no1">No</label>
+                                        </div>
+                                        <!-- <div class="show-error" *ngIf="submitted && f.medicalIns.get('isPrimaryCardholder').errors">
+                                            <small *ngIf="f.medicalIns.get('isPrimaryCardholder').errors.required"> isPrimaryCardholder is required</small>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <ng-container *ngIf="covidConsentForm.get('medicalIns.isPrimaryCardholder').value == 'No'">
+                                    <div  class="second-dob-main">
+                                        <div class="class-req-red"> <span>*</span> If no, include the primary cardholder’s DOB </div>
+                                        <div class="inner-grid-main date-picker-main">
+                                            <input type="text" class="form-control"
+                                            [ngClass]="{'is-invalid' : (f.medicalIns.get('dob').errors && (f.medicalIns.get('dob').touched || submitted))}"
+            
+                                            formControlName="dob"
+                                            #dob2
+                                            
+                                            />
+                                            <!-- (bsValueChange)="onDateChange(dob2, 'medicalIns.dob')"
+                                            bsDatepicker
+                                            readonly
+                                            [maxDate]="today" -->
+                                            <!-- [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" -->
+                                            
+                                        </div>
+                                        <!-- <div class="show-error" *ngIf="submitted && f.medicalIns.get('dob').errors">
+                                            <small *ngIf="f.medicalIns.get('dob').errors.required"> dob is required</small>
+                                        </div> -->
+                                    </div>
+                                </ng-container>
+                                <div class="main-grid-system-forms card-holder-main">
+                                    <div class="inner-grid-main">
+                                        <label class="form-label"><span class="red-color">*</span>Medicale Insurance Provider</label>
+                                        <input
+                                        [ngClass]="{'is-invalid' : (f.medicalIns.get('medicalInsProvider').errors && (f.medicalIns.get('medicalInsProvider').touched || submitted))}"
+                                        formControlName="medicalInsProvider" type="text" />
+                                        <!-- <div class="show-error" *ngIf="submitted && f.medicalIns.get('medicalInsProvider').errors">
+                                            <small *ngIf="f.medicalIns.get('medicalInsProvider').errors.required"> medicalInsProvider is required</small>
+                                            <small *ngIf="f.medicalIns.get('medicalInsProvider').errors.maxlength"> medicalInsProvider should be less than {{f.medicalIns.get('medicalInsProvider').errors.maxlength.requiredLength}}</small>
+                                        </div> -->
+                                    </div>
+                                    <div class="inner-grid-main">
+                                        <label class="form-label"><span class="red-color">*</span>Cardholder ID#</label>
+                                        <input 
+                                        [ngClass]="{'is-invalid' : (f.medicalIns.get('cardHolderId').errors && (f.medicalIns.get('cardHolderId').touched || submitted))}"
+                                        formControlName="cardHolderId" type="text" />
+                                        <!-- <div class="show-error" *ngIf="submitted && f.medicalIns.get('cardHolderId').errors">
+                                            <small *ngIf="f.medicalIns.get('cardHolderId').errors.required"> cardHolderId is required</small>
+                                            <small *ngIf="f.medicalIns.get('cardHolderId').errors.maxlength"> cardHolderId should be less than {{f.medicalIns.get('cardHolderId').errors.maxlength.requiredLength}}</small>
+                                        </div> -->
+                                    </div>    
+                                    <div class="inner-grid-main">
+                                        <label class="form-label"><span class="red-color"></span>Group ID</label>
+                                        <input
+                                        [ngClass]="{'is-invalid' : (f.medicalIns.get('groupId').errors && (f.medicalIns.get('groupId').touched|| submitted ))}"
+                                        formControlName="groupId" type="text" />
+                                        <!-- <div class="show-error" *ngIf="submitted && f.medicalIns.get('groupId').errors">
+                                            <small *ngIf="f.medicalIns.get('groupId').errors.required"> groupId is required</small>
+                                            <small *ngIf="f.medicalIns.get('groupId').errors.maxlength"> groupId should be less than {{f.medicalIns.get('groupId').errors.maxlength.requiredLength}}</small>
+                                        </div> -->
+                                    </div>    
+                                    <div class="inner-grid-main">
+                                        <label class="form-label"><span class="red-color"></span>Payer ID</label>
+                                        <input
+                                        [ngClass]="{'is-invalid' : (f.medicalIns.get('payerId').errors && (f.medicalIns.get('payerId').touched|| submitted) )}"
+                                        formControlName="payerId" type="text" />
+                                        <!-- <div class="show-error" *ngIf="submitted && f.medicalIns.get('payerId').errors">
+                                            <small *ngIf="f.medicalIns.get('payerId').errors.required"> payerId is required</small>
+                                            <small *ngIf="f.medicalIns.get('payerId').errors.maxlength"> payerId should be less than {{f.medicalIns.get('payerId').errors.maxlength.requiredLength}}</small>
+                                        </div> -->
+                                    </div>    
+                                </div>
+                            </ng-container>
+                        </ng-container>
+            
+                        <ng-container *ngSwitchCase="'uninsured'">
+                            <ng-container formGroupName="uninsured">
+                                <div class="under-line-title-black" style="margin-top: 40px">Uninsured </div>
+                                <div class="uninsured-text"><span class="red-color">*</span> uninsured, you must check the box below to attest that the following information is true and accurate:</div>
+                                <div class="check-box-custom">
+                                    <mat-checkbox 
+                                    formControlName="isUninsured"
+                                    [ngClass]="{'is-invalid' : (f.uninsured.get('isUninsured').errors && submitted )}"
+                                    (change)="f.uninsured.get('isUninsured').value == false ? f.uninsured.get('isUninsured').reset() : '' "
+                                    class="example-margin">I do not have any insurance, including but not limited to Medicare, Medicaid or any other private or government-funded health benefit plan.
+                                    </mat-checkbox>
+                                    <div class="terms-condition">In order to have your vaccine administration fee paid for by the United States Health Recources & Services Administration’s COVID-19 
+                                        Program for Uninsured Patients, please provide either (a) a valid Social Securitynumber, (b) state identification numberand state of Issuance, 
+                                        OR (c) a driver’s license number and the state of issuance. </div>
+                                    </div>
+                                    <!-- <div class="show-error" *ngIf="submitted && f.uninsured.get('isUninsured').errors">
+                                        <small *ngIf="f.uninsured.get('isUninsured').errors.required"> isUninsured is required</small>
+                                    </div> -->
+                                <!-- --------*Social Security Number---------------- -->
+                                <div class="new-grid-radio">
+                                    <div class="inner-grid-system">
+                                        <input 
+                                        [ngClass]="{'is-invalid-radio' : ( uinsuredControl.errors && submitted )}"
+                                        (change)="onUninsuredTypeSelected()" [formControl]="uinsuredControl" type="radio" id="socialSecurityNumber" value="socialSecurityNumber">
+                                        <label for="socialSecurityNumber">Social Security Number</label>
+                                        <div class="show-error" *ngIf="submitted && f.uninsured.get('socialSecurityNumber').errors">
+                                            <small *ngIf="f.uninsured.get('socialSecurityNumber').errors.required"> socialSecurityNumber is required</small>
+                                            <small *ngIf="f.uninsured.get('socialSecurityNumber').errors.maxlength"> socialSecurityNumber should be less than {{f.uninsured.get('socialSecurityNumber').errors.maxlength.requiredLength}}</small>
+                                        </div>
+                                    </div>
+                                    <div class="inner-grid-system">
+                                        <input (change)="onUninsuredTypeSelected()" [formControl]="uinsuredControl" type="radio" id="stateIdNumber" value="stateIdNumber">
+                                        <label for="stateIdNumber">State Identification Number & State</label>
+                                        <div class="show-error" *ngIf="submitted && f.uninsured.get('stateIdNumber').errors">
+                                            <small *ngIf="f.uninsured.get('stateIdNumber').errors.required"> stateIdNumber is required</small>
+                                            <small *ngIf="f.uninsured.get('stateIdNumber').errors.maxlength"> stateIdNumber should be less than {{f.uninsured.get('stateIdNumber').errors.maxlength.requiredLength}}</small>
+                                        </div>
+                                    </div>
+                                    <div class="inner-grid-system">
+                                        <input (change)="onUninsuredTypeSelected()" [formControl]="uinsuredControl" type="radio" id="driverLicenseNumber" value="driverLicenseNumber">
+                                        <label for="driverLicenseNumber">Driver’s License Number & State</label>
+                                        <div class="show-error" *ngIf="submitted && f.uninsured.get('driverLicenseNumber').errors">
+                                            <small *ngIf="f.uninsured.get('driverLicenseNumber').errors.required"> driverLicenseNumber is required</small>
+                                            <small *ngIf="f.uninsured.get('driverLicenseNumber').errors.maxlength"> driverLicenseNumber should be less than {{f.uninsured.get('driverLicenseNumber').errors.maxlength.requiredLength}}</small>
+                                        </div>
+                                    </div>
+                                </div>   
+            
+                                <ng-container [ngSwitch]="uinsuredControl.value">
+                                    <ng-container *ngSwitchCase="'socialSecurityNumber'">
+                                        <div class="social-num-main">
+                                            <div class="text-description"><span class="red-color">*</span> Social Security Number</div>
+                                            <input 
+                                            
+                                            [ngClass]="{'is-invalid' : ( f.uninsured.get('socialSecurityNumber').errors && (f.uninsured.get('socialSecurityNumber').touched|| submitted ))}"
+                                            formControlName="socialSecurityNumber" type="text" />
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'stateIdNumber'">
+                                        <div class="social-num-main">
+                                            <div class="text-description"><span class="red-color">*</span>State Identification Number & State</div>
+                                            <input
+                                            [ngClass]="{'is-invalid' : ( f.uninsured.get('stateIdNumber').errors && (f.uninsured.get('stateIdNumber').touched || submitted))}"
+                                            formControlName="stateIdNumber" type="text" />
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'driverLicenseNumber'">
+                                        <div class="social-num-main">
+                                            <div class="text-description"><span class="red-color">*</span>Driver’s License Number & State</div>
+                                            <input
+                                            [ngClass]="{'is-invalid' : ( f.uninsured.get('driverLicenseNumber').errors && (f.uninsured.get('driverLicenseNumber').touched || submitted))}"
+                                            formControlName="driverLicenseNumber" type="text" />
+                                        </div>
+                                    </ng-container>
+                                </ng-container> 
+                                <!-- <div class="social-num-main">
+                                    <div class="text-description"><span class="red-color">*</span> Social Security Number</div>
+                                    <input formControlName="socialSecurityNumber" type="text" />
+                                    <div class="or-text">Or</div>
+                                </div>
+                        
+                                <div class="social-num-main stat-identi-num">
+                                    <div class="comman-main-text">
+                                        <div class="text-description">State Identification Number & State</div>
+                                        <input formControlName="stateIdNumber" type="text" />
+                                    </div>
+                                    <div class="or-text">Or</div>
+                                    <div class="comman-main-text">
+                                        <div class="text-description">Driver’s License Number & State</div>
+                                        <input formControlName="driverLicenseNumber" type="text" />
+                                    </div>
+                                </div> -->
+                            </ng-container>
+                        </ng-container>
+            
+                    </ng-container>
+
+            
+                
+
+                <!-- ------------------last-button-row------------------ -->
+                <!-- <div class="last-button-row">
+                    <button class="back-btn"  (click)="goToPage('FIRST')">Back</button>
+                    <button class="next-btn"  (click)="goToPage('THIRD')">Next</button>
+                </div> -->
+        
+        
+            </div>
+        <!-- </ng-container> -->
+
+
+        
+        <!-- <ng-container *ngSwitchCase="'THIRD'"> -->
+            <div class="main-form-wrapper">
+                <!-- <div class="first-row-heading">
+                    <div class="under-line-blue">COVID Vaccine Intake Consent Form </div>
+                    <button class="btn">+ Add other dose</button>
+            
+                </div> -->
+
+
+                <!-- ----------------Potential Contraindications------------------------------- -->
+        <div formGroupName="potentialContradiction" class="main-radio-combo">
+            <div class="form-heading">Potential Contraindications <span class="red-color">*</span></div>
+            <!-- -first-row -->
+            <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span>1.</span> Are you feeling sick today?
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input [ngClass]="{'is-invalid-radio' : (f.potentialContradiction.get('sick').errors && submitted )}"
+                         formControlName="sick" type="radio" id="yes11" value="Yes">
+                        <label for="yes11">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input formControlName="sick" type="radio" id="no11" value="No">
+                        <label for="no11">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input formControlName="sick" type="radio" id="dontknow11" value="dontknow">
+                        <label for="dontknow11">Don’t Know</label>
+                    </div>    
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialContradiction.get('sick').errors">
+                        <small *ngIf="f.potentialContradiction.get('sick').errors.required"> sick is required</small>
+                    </div> -->
+                </div>
+
+            </div>
+            <!-- --second-row -->
+           
+            <!-- -third-row -->
+            <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span>2.</span> Have you ever had a severe allergic reaction (e.g., anaphylaxis) in the past? <br/>
+                    Example: a reaction for which you were treated with epinephrine or EpiPen®, 
+                    or for which you had to go to the hospital?
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input
+                        [ngClass]="{'is-invalid-radio' : (f.potentialContradiction.get('hadSevereAllergy').errors && submitted )}"
+                        type="radio" id="yes13" formControlName="hadSevereAllergy" value="Yes">
+                        <label for="yes13">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="no13" formControlName="hadSevereAllergy" value="No">
+                        <label for="no13">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="dontknow13" formControlName="hadSevereAllergy" value="dontknow">
+                        <label for="dontknow13">Don’t Know</label>
+                    </div>    
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialContradiction.get('hadSevereAllergy').errors">
+                        <small *ngIf="f.potentialContradiction.get('hadSevereAllergy').errors.required"> hadSevereAllergy is required</small>
+                    </div>   -->
+                </div>
+
+            </div>
+            <!-- -fourth-row -->
+            <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span></span> Was the severe allergic reaction after receiving a COVID-19 vaccine?
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input
+                        [ngClass]="{'is-invalid-radio' : (f.potentialContradiction.get('hadAllergyAfterDose').errors && submitted )}"
+                        type="radio" id="yes14" formControlName="hadAllergyAfterDose" value="Yes">
+                        <label for="yes14">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="no14" formControlName="hadAllergyAfterDose" value="No">
+                        <label for="no14">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="dontknow14" formControlName="hadAllergyAfterDose" value="dontknow">
+                        <label for="dontknow14">Don’t Know</label>
+                    </div>  
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialContradiction.get('hadAllergyAfterDose').errors">
+                        <small *ngIf="f.potentialContradiction.get('hadAllergyAfterDose').errors.required"> hadAllergyAfterDose is required</small>
+                    </div>     -->
+                </div>
+
+            </div>
+            <!-- -fifth-row -->
+            <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span></span> Was the severe allergic reaction after receiving another vaccine or injectable medication?
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input 
+                        [ngClass]="{'is-invalid-radio' : (f.potentialContradiction.get('hadAllergyAfterOtherDoseOrInjectable').errors && submitted )}"
+                        type="radio" id="yes15" formControlName="hadAllergyAfterOtherDoseOrInjectable" value="Yes">
+                        <label for="yes15">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="no15" formControlName="hadAllergyAfterOtherDoseOrInjectable" value="No">
+                        <label for="no15">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="dontknow15" formControlName="hadAllergyAfterOtherDoseOrInjectable" value="dontknow">
+                        <label for="dontknow15">Don’t Know</label>
+                    </div>    
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialContradiction.get('hadAllergyAfterOtherDoseOrInjectable').errors">
+                        <small *ngIf="f.potentialContradiction.get('hadAllergyAfterOtherDoseOrInjectable').errors.required"> hadAllergyAfterOtherDoseOrInjectable is required</small>
+                    </div>   -->
+                </div>
+            </div>
+            <!-- -sixth-row -->
+            <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span></span> Was the severe allergic reaction related to receiving Polyethylene Glycol?
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input 
+                        [ngClass]="{'is-invalid-radio' : (f.potentialContradiction.get('hadAllergyRelatedToPolyGlycol').errors && submitted )}"
+                        type="radio" id="yes16" formControlName="hadAllergyRelatedToPolyGlycol" value="Yes">
+                        <label for="yes16">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="no16" formControlName="hadAllergyRelatedToPolyGlycol" value="No">
+                        <label for="no16">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="dontknow16" formControlName="hadAllergyRelatedToPolyGlycol" value="dontknow">
+                        <label for="dontknow16">Don’t Know</label>
+                    </div>   
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialContradiction.get('hadAllergyRelatedToPolyGlycol').errors">
+                        <small *ngIf="f.potentialContradiction.get('hadAllergyRelatedToPolyGlycol').errors.required"> hadAllergyRelatedToPolyGlycol is required</small>
+                    </div>    -->
+                </div>
+            </div>
+            <!-- -seventh-row -->
+            <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span>3</span> Have you received any vaccines in the past 14 days?
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input
+                        [ngClass]="{'is-invalid-radio' : (f.potentialContradiction.get('receivedDoseIn14Days').errors && submitted )}"
+                        type="radio" id="yes17" formControlName="receivedDoseIn14Days" value="Yes">
+                        <label for="yes17">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="no17" formControlName="receivedDoseIn14Days" value="No">
+                        <label for="no17">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="dontknow17" formControlName="receivedDoseIn14Days" value="dontknow">
+                        <label for="dontknow17">Don’t Know</label>
+                    </div>    
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialContradiction.get('receivedDoseIn14Days').errors">
+                        <small *ngIf="f.potentialContradiction.get('receivedDoseIn14Days').errors.required"> receivedDoseIn14Days is required</small>
+                    </div>   -->
+                </div>
+            </div>
+            <!-- -seventh-row -->
+            <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span>4</span> Have you received monoclonal antibodies or convalescent plasma as part of a 
+                    COVID-19
+                    treatment in the past 90 days?
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input
+                        [ngClass]="{'is-invalid-radio' : (f.potentialContradiction.get('receivedAntibodies').errors && submitted )}"
+                        type="radio" id="yes18" formControlName="receivedAntibodies" value="Yes">
+                        <label for="yes18">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="no18" formControlName="receivedAntibodies" value="No">
+                        <label for="no18">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="dontknow18" formControlName="receivedAntibodies" value="dontknow">
+                        <label for="dontknow18">Don’t Know</label>
+                    </div>    
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialContradiction.get('receivedAntibodies').errors">
+                        <small *ngIf="f.potentialContradiction.get('receivedAntibodies').errors.required"> receivedAntibodies is required</small>
+                    </div>   -->
+                </div>
+            </div>
+        </div>
+
+        <!-- -------------potential-contridation--------------- -->
+        <div formGroupName="potentialConsiderationFirst" class="main-radio-combo">
+            <div class="form-heading">Potential Considerations <span class="red-color">*</span> </div>
+            <!-- -first-row -->
+            <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span>1.</span> Do you have a bleeding disorder or are you taking a blood thinner?
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input 
+                        [ngClass]="{'is-invalid-radio' : (f.potentialConsiderationFirst.get('haveBleedingDisorder').errors && submitted )}"
+                        type="radio" id="yes19" formControlName="haveBleedingDisorder" value="Yes">
+                        <label for="yes19">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="no19" formControlName="haveBleedingDisorder" value="No">
+                        <label for="no19">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="dontknow18" formControlName="haveBleedingDisorder" value="dontknow">
+                        <label for="dontknow18">Don’t Know</label>
+                    </div>    
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialConsiderationFirst.get('haveBleedingDisorder').errors">
+                        <small *ngIf="f.potentialConsiderationFirst.get('haveBleedingDisorder').errors.required"> haveBleedingDisorder is required</small>
+                    </div>   -->
+                </div>
+
+            </div>
+            <!-- -second-row -->
+            <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span>2.</span> Do you have a weakened immune system or currently take medications that can diminish <br/>
+                    your immune response (i.e., HIV medications, steroids, anticancer drugs, or radiation treatment, etc.?)
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input 
+                        [ngClass]="{'is-invalid-radio' : (f.potentialConsiderationFirst.get('haveWeekImmuneSystem').errors && submitted )}"
+                        type="radio" id="yes20" formControlName="haveWeekImmuneSystem" value="Yes">
+                        <label for="yes20">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="no21" formControlName="haveWeekImmuneSystem" value="No">
+                        <label for="no21">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="dontknow21" formControlName="haveWeekImmuneSystem" value="dontknow">
+                        <label for="dontknow21">Don’t Know</label>
+                    </div>
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialConsiderationFirst.get('haveWeekImmuneSystem').errors">
+                        <small *ngIf="f.potentialConsiderationFirst.get('haveWeekImmuneSystem').errors.required"> haveWeekImmuneSystem is required</small>
+                    </div>       -->
+                </div>
+
+            </div>
+             <!-- -thrid-row -->
+             <div class="radio-row-main">
+                <div class="left-col-main">
+                    <span>3.</span> For women, are you currently pregnant or breastfeeding?
+                </div>
+                <div class="radio-btn-group-main right-col">
+                    <div class="inner-grid-system">
+                        <input 
+                        [ngClass]="{'is-invalid-radio' : (f.potentialConsiderationFirst.get('isPregOrBreastfeeding').errors && submitted )}"
+                        type="radio" id="yes22" formControlName="isPregOrBreastfeeding" value="Yes">
+                        <label for="yes22">Yes</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="no22" formControlName="isPregOrBreastfeeding" value="No">
+                        <label for="no22">No</label>
+                    </div>
+                    <div class="inner-grid-system">
+                        <input type="radio" id="dontknow22" formControlName="isPregOrBreastfeeding" value="dontknow">
+                        <label for="dontknow22">Don’t Know</label>
+                    </div>    
+                    <!-- <div class="show-error" *ngIf="submitted && f.potentialConsiderationFirst.get('isPregOrBreastfeeding').errors">
+                        <small *ngIf="f.potentialConsiderationFirst.get('isPregOrBreastfeeding').errors.required"> isPregOrBreastfeeding is required</small>
+                    </div>  -->
+                </div>
+
+            </div>
+           
+        </div>
+                <!-- -------------Content--------------- -->
+                    <div class="consent-service"><b>CONSENT FOR SERVICES:</b> I have been provided with the Vaccine Information
+                        Sheet(s) or patient fact sheet corresponding to the vaccine(s) that I am receiving.
+                        I have read the information provided about the vaccine I am to receive. I have had
+                        the chance to ask questions that were answered to my satisfaction. I understand
+                        the benefits and risks of vaccination and I voluntarily assume full responsibility
+                        for any reactions that may result. I understand that I should remain in the vaccine
+                        administration area for 15 minutes after the vaccination to be monitored for any
+                        potential adverse reactions. I understand if I experience side effects that I should
+                        do the following: call pharmacy, contact doctor, call 911. I request that the vaccine
+                        be given to me or to the person named above for whom I am authorized to make
+                        this request.
+                    </div>
+                    <div class="consent-service"><b>AUTHORIZATION TO REQUEST PAYMENT: </b> I do hereby authorize Hallers
+                        Pharmacy® (“Haller's”) to release information and request payment. I certify that the information given by me in applying for payment under Medicare or Medicaid,
+                        or the HRSA COVID-19 Program for Uninsured Patients, is correct. I authorize release of all
+                        records to act on this request. I request that payment of authorized benefits be
+                        made on my behalf.
+                    </div>
+                    <div class="consent-service"><b>DISCLOSURE OF RECORDS: </b> I understand that Hallers may be required to or may
+                        voluntarily disclose my health information to the physician responsible for this
+                        protocol of specific health information of people vaccinated at Hallers (if
+                        applicable), my Primary Care Physician (if I have one), my insurance plan, health systems and hospitals, and/or state or federal registries, for purposes of treatment, payment or other health care operations (such as administration or quality assurance). I also understand that Hallers will use and disclose my health information as set forth in the Hallers Notice of Privacy Practices (copy is available in-store, online or by requesting a paper copy from the pharmacy). I agree to have CAIR share my immunization data with Health Care Providers, agencies or schools. Vaccine Clinics: If I am receiving a vaccine through a vaccine clinic, I understand that my name, vaccine appointment date and time will be provided to the clinic coordinator.
+                        
+                    </div>
+                <!-- ---------------------------signature--------------------------- -->
+                <div class="main-second-last-div new-div-added" id="content">
+                    <div class="left-label">Signature of patient to receive vaccine 
+                        (or parent, guardian, or authorized 
+                        representative)</div>
+<!--                         
+                    <signature-pad 
+                        id="signaturePad"
+                        [options]="signaturePadOptions"
+                        (onEndEvent)="drawComplete()">
+                    </signature-pad> -->
+                    
+                    <img  *ngIf="signatureBase64; else signatureImgValue" style="width: 200px; height: 100px;" [src]="this.signatureBase64">
+                    <ng-template #signatureImgValue>
+                        <img  (click)="Imgpreview()" style="width: 100px; height: 100px;" [src]="f?.signature?.value ? f.signature?.value : f.signature?.value?.name">
+                    </ng-template>
+           
+                    <div></div>
+                    <div></div>
+                    <div class="sign-main">
+                     
+                        <span class="upload-main">
+                            {{covidConsentForm.get('signature').value?.name ? covidConsentForm.get('signature').value.name : "signature.png" }}</span>
+                        <button class="clear-btn-ab"  style="cursor: pointer;" (click)="onClearSignature()">Clear</button>
+                    </div>
+                    <ng-container formGroupName="potentialConsiderationSecond">
+                        <div class="inner-grid-main date-picker-main-first">
+                            <input 
+                            formControlName="date"
+                            type="text" class="form-control" placeholder="Date"     
+                            #date
+                            [maxDate]="today"
+                            
+                            (bsValueChange)="onDateChangeDate(date, 'potentialConsiderationSecond.date')"
+                            readonly
+                            bsDatepicker 
+                            />
+                            <!-- [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" -->
+                        </div>
+                    </ng-container>
+                </div>
+    
+                    <ng-container formGroupName="potentialConsiderationSecond">
+                <!-- -----------------last-row------------------ -->
+                <div class="if-sign-text">If signing on behalf of the patient, you are stating that you are authorized to provide the required consents on behalf of the patient.</div>
+                <div class="main-grid-system-forms border-none">
+                    <div class="inner-grid-main">
+                            <label class="form-label">Name of parent, guardian, 
+                                or authorized representative</label>
+                            <input formControlName="nameOfParent" type="text" />
+                    </div>
+                    <div class="inner-grid-main">
+                        <label class="form-label">Phone Number</label>
+                        <input formControlName="mobile" maxlength="10" OnlyNumeric type="text" />
+                    </div>
+                    <div class="inner-grid-main">
+                        <label class="form-label">Relationship</label>
+                        <input formControlName="relationship" type="text" />
+                    </div>
+                
+                </div>
+            </ng-container>
+                <!-- ------------------last-button-row------------------ -->
+                <!-- <div class="last-button-row">
+                    <button class="back-btn" (click)="switchRouting()">Back</button>
+                    <button class="next-btn" 
+                    [disabled]="isLoading"
+                    (click)="updateVacForm()">
+                        <i class="fa mr-2" [ngClass]="{'fa-spin fa-spinner': isLoading}"></i>
+                        Update
+                    </button>
+                </div> -->
+                <div id="destination" class="last-button-row" *ngIf="!facilityFormData?.isVerified" id="custom-container">
+                    <button  class="back-btn" [disabled]="isRejectLoader" (click)="verifyPatients(false)" id="destination" >
+                        <i class="fa mr-2" [ngClass]="{'fa-spin fa-spinner': isRejectLoader}"></i>
+                        Reject</button>
+                    <button class="next-btn" 
+                    [disabled]="isVerifyLoader"
+                    (click)="verifyPatients(true)"
+                    
+                    >
+                        <i class="fa mr-2" [ngClass]="{'fa-spin fa-spinner': isVerifyLoader}"></i>
+                        Verify
+                    </button>
+                </div>
+            
+            
+            
+            
+            
+            </div>
+        <!-- </ng-container> -->
+    </form>
+</ng-container>
+
+
+
+
+
+

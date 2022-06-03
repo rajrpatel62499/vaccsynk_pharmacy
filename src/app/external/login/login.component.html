@@ -1,0 +1,72 @@
+<div class="login-main-area">
+    <div class="row inner-login-page">
+        <!-- <div class="logo-login" [routerLink]="[AppRoutes.ROOT]">
+        <img class="logo-img1" src="../../../assets/images/logo.svg" title="logo" alt="logo">
+        </div> -->
+
+        <!-- <h1 class="heading-one">
+            <span class="wl-text"> Welcome!</span>Integrate patients' healthcare data with mutual consent, <br>supervise their immunization history, and ontribute towards public<br>  health with Vaccsynk's transparent pharmacy administration system.
+         </h1> -->
+        <!-- <h1 class="heading1">
+            <div class="img-mains">
+            <span class="wel-text"> Welcome Back!</span>Integrate patients' healthcare data with mutual consent, <br><span class="wel-text1">supervise their immunization history, and ontribute towards public<br>  health with Vaccsynk's transparent pharmacy administration system.</span>
+        </div>
+         </h1> -->
+        <!-- <div class="left-img">
+            <img src="../../../assets/images/login-iiu.svg" alt="img" title="img">
+        </div> -->
+        <form [formGroup]="loginForm" style="margin: auto;">
+            <div class="right-login-card">
+                <img class="logo-img" src="../../../assets/images/logo.svg" title="logo" alt="logo">
+                <h1 class="heading">Welcome to Vaccsynk</h1>
+
+                <div class="login-form">
+                    <div class="login-row email-id">
+                        <div class="label-form">Your e-mail</div>
+                        <input (keyup.enter)="login()" formControlName="email" type="text"
+                            placeholder="Enter Valid Email">
+                        <!-- {{f.email.errors |json }} -->
+                        <div *ngIf="submitted && f.email.errors">
+                            <div *ngIf="f.email.errors.required" class="invalid"> Email is required</div>
+                            <div *ngIf="f.email.errors.email" class="invalid">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="login-row password-id">
+                        <div class="label-form">Password</div>
+                        <input (keyup.enter)="login()" formControlName="password" type="text" minlength="6"
+                            placeholder="at least 6 charachters" [type]="hide ? 'password' : 'text'">
+
+                        <button mat-icon-button matSuffix [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <img (click)="hide = !hide" src="../../../assets/images/password.svg" alt="logo"
+                                title="logo" />
+                        </button>
+                        <div *ngIf="submitted && f.password.errors">
+                            <div *ngIf="f.password.errors.required" class="invalid">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength" class="invalid">Password must be at least 6
+                                characters</div>
+                        </div>
+
+                    </div>
+                    <div class="margin-left-10px">
+                        <!-- <mat-checkbox class="example-margin">Keep me logged in</mat-checkbox> -->
+                    </div>
+                    <button class="btn mat-spinner" [disabled]="isLoading" (click)="login()">
+                        <i class="fa mr-2"
+                            [ngClass]="{'fa-spin fa-spinner': isLoading, 'fa-sign-in': !isLoading}"></i>Login</button>
+                </div>
+               
+
+                <div class="forgot-section">
+                    <a (click)="forgotPassword()" style="cursor: pointer;color: #14649C;" class="link-text">Forgot
+                        password?</a>
+                    <span>or</span>
+                    <span>Don’t have an account? <a style="cursor: pointer;color: #14649C;margin-left: 7px;" [routerLink]="[AppRoutes.ROOT,AppRoutes.REGISTER_PHARMACY]">Register</a></span>
+                </div>
+            </div>
+      </form>
+    </div>
+</div>
+
+<!-- 
+<button class="btn btn-primary" (click)="login()">Login</button> -->

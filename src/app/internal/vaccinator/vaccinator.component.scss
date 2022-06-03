@@ -1,0 +1,168 @@
+
+a:hover { 
+    text-decoration: none; 
+} 
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0;
+    border-bottom-width: 1px;
+    /* border-bottom-style: solid; */
+}
+
+.no-data {
+    text-align: center;
+    border: none !important;
+    padding: 40px 0px !important;
+}
+.heading-row-main {
+    padding: 20px 30px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .left-heading-col {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 25px;
+        color: #14649C;
+    }
+    .right-col-main {
+        display: flex;
+        align-items: center;
+        .remind-div {
+            margin-right: 30px;
+            font-size: 15px;
+            line-height: 25px;
+            text-align: right;
+            color: #14649C;
+            cursor: pointer;
+            img{
+                width: 20px;
+                margin-right: 5px;
+            }
+        }
+        .dose-history{
+            font-size: 15px;
+            line-height: 25px;
+            text-align: right;
+            color: #14649C;
+            img{
+                width: 20px;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+
+
+span.round-btn {
+    position: relative;
+    padding-left: 10px;
+}
+
+.verified span.round-btn:before {
+    position: absolute;
+    content: '';
+    background: #B2DF8A;
+    width: 10px;
+    height: 10px;
+    left: -8px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 100%;
+}
+.rescheduled span.round-btn:before {
+    position: absolute;
+    content: '';
+    background: url(../../../assets/images/isVerfied.svg)no-repeat;
+    width: 10px;
+    height: 10px;
+    left: -8px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 100%;
+}
+.cancelled span.round-btn:before {
+    position: absolute;
+    content: '';
+    background: #DB000D;
+    width: 10px;
+    height: 10px;
+    left: -8px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 100%;
+}   
+
+li{
+    cursor: pointer;
+}
+
+   
+li.active{
+    color: #fff;
+    text-decoration: none;
+    background: url(../../../assets/images/Vector.svg) no-repeat;
+    background-position: center right 4px;
+    margin-right: 14px;
+    background-color: transparent;
+}
+
+li.active{
+    background-color: transparent;
+}
+
+.item {
+    margin-top: 11px;
+}
+
+.main-text {
+    display: flex;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 13px 37px;
+}
+span.vaccine-text {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 33px;
+    letter-spacing: 0.02em;
+    color: #14649C;
+}
+button.vaccine-btn {
+    margin-left: auto;
+    padding: 7px 20px;
+    background: none;
+    border: 1px solid #14649C;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #14649c;
+}
+
+.main-img {
+    display: flex;
+    flex-direction: column;
+
+}
+
+label.emp-main {
+    font-size: 20px;
+    line-height: 40px;
+    letter-spacing: 0.02em;
+    color: #14649C;
+}
+
+img.img-main {
+    display: flex;
+    margin: auto;
+}
+
+.patient-table .mat-elevation-z8 table.mat-table.cdk-table.mat-sort tbody tr td:first-child, .patient-table .mat-elevation-z8 table.mat-table.cdk-table.mat-sort thead tr.mat-header-row th:first-child {
+    padding-left: 15px !important;
+}

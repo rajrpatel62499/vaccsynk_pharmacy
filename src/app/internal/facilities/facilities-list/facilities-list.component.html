@@ -1,0 +1,73 @@
+<div class="container-fluid p-3">
+    <div class="heading-main-text">All Facilities </div>
+    <div class="seperator"></div>
+    <div class="row">
+        <div class="col-12 mx-auto">
+            <div  class="search-text">
+                <div class="input-group">
+                    <div class="search-box-container">   
+                        <!-- *ngIf="facilityCenters.length > 0" -->
+                        <input type="text" class="form-control" name="" id="" aria-describedby="helpId" (keyup)="applyFilter($event)" placeholder="Search...." />
+                    </div>
+                </div>
+            </div>
+            <div class="main-grid">
+                <div class="inner-grid" *ngFor="let facility of facilityCenters">
+                    <ngx-avatar size="55" bgColor="#14649c" [name]="facility?.facilityName?.charAt(0).toUpperCase()"></ngx-avatar>
+                    <div class="right-col">
+                        <div class="first-row">
+                            <div class="pharmacy-name">{{facility?.facilityName}}</div>
+
+                        </div>
+                        <div class="address-img-main">
+                            <img src="assets/images/locations-pins.svg" alt="logo" title="logo">
+                            {{facility?.streetAddress}}
+                        </div>
+                        <div class="main-contact">
+                            <div class="time-main">
+                                <img src="assets/images/phone.svg" alt="watch" title="watch">
+                                {{facility?.phone}}
+                            </div>
+                            <div class="time-main">
+                                <img src="assets/images/mail.svg" alt="watch" title="watch">
+                                {{facility?.email}}
+                            </div>
+                        </div>
+
+                        <div [routerLink]="[AppRoutes.ROOT, AppRoutes.FACILITIES, AppRoutes.NEW_REQ]"
+                            (click)="vacService.setEditedFacility(facility);" style="cursor: pointer;" class="view-set">
+
+                            View All Paitents
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+                
+                <div class="item">
+                    <ngx-skeleton-loader *ngIf="isLoading" count="1" animation="pulse" [theme]="{
+                        height: '170px',
+                        width: '96%',
+                        'margin-left': '29px',
+                        'border-radius': '10px',
+                        'background-color': 'rgb(127, 140, 141);'
+                        }">
+                    </ngx-skeleton-loader>
+                </div>
+
+                <div *ngIf="facilityCenters.length == 0 && !isLoading " >
+                    <div class="main">
+                        <img  class="img-main" src="../../../assets/images/g10.svg" colspan="6" ><label class="emp-main" >No Facility found!</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
